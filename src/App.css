@@ -33,4 +33,9 @@ div.result {
 
 div.result li {
   list-style: none;
+  font-size: 25px;
+}
+
+div.result i {
+  padding-left: 5px;
 }

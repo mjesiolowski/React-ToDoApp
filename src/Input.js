@@ -2,12 +2,12 @@ import React from 'react';
 
 
 const Input = props => {
-   const { value, add } = props
+   const { value, input, add, submit } = props
    return (
       <>
-         <form>
-            <input type="text" placeholder="Add task here" value={value} onChange={add} />
-            <i className="fas fa-plus-circle"></i>
+         <form onSubmit={submit}>
+            <input type="text" placeholder="Add task here" value={value} onChange={input} />
+            <i className="fas fa-plus-circle" onClick={add}></i>
             <i className="fas fa-search"></i>
          </form>
       </>

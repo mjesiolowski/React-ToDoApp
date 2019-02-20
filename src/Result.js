@@ -3,8 +3,8 @@ import Task from './Task'
 
 
 const Result = props => {
-   const { tasks } = props
-   const oneTask = tasks.map(task => <Task key={task.id} task={task.text} />)
+   const { tasks, remove } = props
+   const oneTask = tasks.map(task => <Task key={task.id} task={task.text} id={task.id} remove={remove} />)
 
    return (
       <>

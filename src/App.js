@@ -25,9 +25,41 @@ class App extends Component {
     ]
   }
 
-  handleAdd = e => {
+  idValue = 3;
+
+  handleInputValue = e => {
     this.setState({
       value: e.target.value
+    })
+  }
+
+  handleAddButton = () => {
+    const tasks = [...this.state.tasks]
+    tasks.push(
+      {
+        id: this.idValue,
+        text: this.state.value,
+        active: true,
+      }
+    )
+    this.setState({
+      tasks,
+      value: ''
+    })
+    this.idValue++
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.handleAddButton()
+  }
+
+  handleRemoveTask = id => {
+    const tasks = [...this.state.tasks]
+    const index = tasks.findIndex(task => task.id === id)
+    tasks.splice(index, 1)
+    this.setState({
+      tasks
     })
   }
 
@@ -35,10 +67,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="input">
-          <Input value={this.state.value} add={this.handleAdd} />
+          <Input value={this.state.value} input={this.handleInputValue} add={this.handleAddButton} submit={this.handleSubmit} />
         </div>
         <div className="result">
-          <Result tasks={this.state.tasks} />
+          <Result tasks={this.state.tasks} remove={this.handleRemoveTask} />
         </div>
       </div>
     );
