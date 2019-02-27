@@ -11,9 +11,12 @@
 div.input,
 div.result {
   height: 15vh;
-  line-height: 15vh;
   border: 2px solid black;
   margin: 20px;
+}
+
+div.input form {
+  height: 100%;
 }
 
 div.input input {
@@ -29,6 +32,11 @@ div.input i {
 div.result {
   height: 45vh;
   line-height: 5vh;
+}
+
+div.result .tasksToDo {
+  max-height: 50%;
+  overflow: auto;
 }
 
 div.result li {
