@@ -5,14 +5,14 @@ import SearchedTasks from './SearchedTasks'
 
 
 const TasksList = props => {
-   const { tasksToDo, removeTask, searchStatus, returnHandler, searchedTasks } = props
+   const { tasksToDo, doneTask, searchStatus, returnHandler, searchedTasks, removedTask } = props
 
    const activeTasks = tasksToDo.filter(task => task.active)
 
    let doneTasks = tasksToDo.filter(task => !task.active)
    doneTasks = doneTasks.sort((taskA, taskB) => taskB.time - taskA.time).slice(0, 3)
 
-   const active = activeTasks.map(task => <TasksToDo key={task.id} task={task.text} id={task.id} remove={removeTask} returnHandler={returnHandler} />)
+   const active = activeTasks.map(task => <TasksToDo key={task.id} task={task.text} id={task.id} done={doneTask} removed={removedTask} />)
    const done = doneTasks.map(task => <DoneTasks key={task.id} task={task.text} />)
    const searched = searchedTasks.map(task => <SearchedTasks key={task.id} task={task.text} />)
 
@@ -33,6 +33,7 @@ const TasksList = props => {
                   <>
                      <h2>Search results:</h2>
                      <ul>{searched}</ul>
+                     {!searchedTasks.length && <p>No results</p>}
                      <div><i className="fas fa-arrow-alt-circle-left" onClick={returnHandler}></i></div>
                   </>
             }
@@ -41,7 +42,7 @@ const TasksList = props => {
 
          {!searchStatus ?
             <>
-               <h2>Done tasks:</h2>
+               <h2>Last 3 done tasks:</h2>
                <div className="doneTasks">
                   <ul>{done}</ul>
                </div>

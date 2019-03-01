@@ -3,10 +3,12 @@ import './App.css';
 import Input from './Input'
 import TasksList from './TasksList'
 
+
 class App extends Component {
   state = {
     value: '',
     alert: false,
+    duplicate: false,
     tasks: [
       {
         id: 0,
@@ -43,12 +45,24 @@ class App extends Component {
     this.handleAddButton()
   }
 
-  //Tasks handlers
+  //adding task handlers
 
   handleAddButton = () => {
     const tasks = [...this.state.tasks]
+    const duplicateCheck = tasks.filter(task => task.text === this.state.value).length
 
-    if (this.state.value.length > 2) {
+    if (this.state.value.length <= 2) {
+      this.setState({
+        alert: !this.state.alert
+      })
+    }
+
+    else if (duplicateCheck) {
+      this.setState({
+        duplicate: !this.state.duplicate
+      })
+    }
+    else {
       tasks.push(
         {
           id: this.idValue,
@@ -62,12 +76,10 @@ class App extends Component {
       })
       this.idValue++
     }
-    else this.setState({
-      alert: true
-    })
   }
 
-  handleRemoveTask = id => {
+  // changing task status handlers
+  handleDoneTask = id => {
     const tasks = [...this.state.tasks]
     tasks.forEach(task => {
       if (task.id === id) {
@@ -80,17 +92,34 @@ class App extends Component {
     })
   }
 
-  handleSearchTask = () => {
-    // No result handler to be added
+  handleRemovedTask = id => {
+    console.log('ok', id)
     const tasks = [...this.state.tasks]
-    const searchResult = tasks.filter((result) => result.text.includes(this.state.value) && result.active
-    )
+    const tasksAfterRemoval = tasks.filter((task) => {
+      if (task.id !== id) {
+        return task
+      } return null
+    })
 
     this.setState({
-      value: '',
-      search: true,
-      searchedTasks: [...searchResult]
+      tasks: tasksAfterRemoval,
     })
+  }
+
+  //searching handlers
+  handleSearchedTask = () => {
+    const tasks = [...this.state.tasks]
+
+    if (this.state.value.length) {
+      const searchResult = tasks.filter((result) => result.text.toLowerCase().includes(this.state.value.trim().toLowerCase()) && result.active
+      )
+
+      this.setState({
+        value: '',
+        search: true,
+        searchedTasks: [...searchResult]
+      })
+    }
   }
 
   handleReturn = () => {
@@ -99,10 +128,15 @@ class App extends Component {
     })
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.alert && this.state.value.length > 2) {
       this.setState({
-        alert: false,
+        alert: !this.state.alert,
+      })
+    }
+    else if (prevState.value !== this.state.value) {
+      this.setState({
+        duplicate: false
       })
     }
   }
@@ -112,11 +146,11 @@ class App extends Component {
       <div className="App">
 
         <div className="input">
-          <Input value={this.state.value} input={this.handleInputValue} add={this.handleAddButton} submit={this.handleSubmit} alert={this.state.alert} search={this.handleSearchTask} />
+          <Input value={this.state.value} input={this.handleInputValue} add={this.handleAddButton} submit={this.handleSubmit} alert={this.state.alert} search={this.handleSearchedTask} duplicate={this.state.duplicate} />
         </div>
 
         <div className="result">
-          <TasksList tasksToDo={this.state.tasks} removeTask={this.handleRemoveTask} searchStatus={this.state.search} searchedTasks={this.state.searchedTasks} returnHandler={this.handleReturn} />
+          <TasksList tasksToDo={this.state.tasks} doneTask={this.handleDoneTask} searchStatus={this.state.search} searchedTasks={this.state.searchedTasks} returnHandler={this.handleReturn} removedTask={this.handleRemovedTask} />
         </div>
 
       </div>
