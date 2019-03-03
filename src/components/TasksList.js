@@ -12,20 +12,35 @@ const TasksList = props => {
    let doneTasks = tasksToDo.filter(task => !task.active)
    doneTasks = doneTasks.sort((taskA, taskB) => taskB.time - taskA.time).slice(0, 3)
 
-   const active = activeTasks.map(task => <TasksToDo key={task.id} task={task.text} id={task.id} done={doneTask} removed={removedTask} />)
-   const done = doneTasks.map(task => <DoneTasks key={task.id} task={task.text} />)
-   const searched = searchedTasks.map(task => <SearchedTasks key={task.id} task={task.text} />)
+   const active = activeTasks.map((task, index) =>
+      (<TasksToDo
+         key={task.id}
+         task={task.text}
+         id={task.id}
+         index={index}
+         done={doneTask}
+         removed={removedTask} />))
+
+   const done = doneTasks.map(task =>
+      (<DoneTasks
+         key={task.id}
+         task={task.text} />))
+
+   const searched = searchedTasks.map(task =>
+      (<SearchedTasks
+         key={task.id}
+         task={task.text} />))
 
 
    return (
       <>
-         <div className="tasksToDo">
+         <div className="tasksList tasksToDo">
             {
                !searchStatus ?
                   (active.length > 0 ?
                      <>
-                        <h2>Tasks to do:</h2>
-                        <ul>{active}</ul>
+                        <h2 className="tasksList tasksToDo__title">Tasks to do:</h2>
+                        <ul className="tasksList tasksToDo__list">{active}</ul>
                      </>
                      :
                      <h2>No tasks on list!</h2>)
@@ -34,7 +49,7 @@ const TasksList = props => {
                      <h2>Search results:</h2>
                      <ul>{searched}</ul>
                      {!searchedTasks.length && <p>No results</p>}
-                     <div><i className="fas fa-arrow-alt-circle-left" onClick={returnHandler}></i></div>
+                     <i className="fas fa-arrow-alt-circle-left" onClick={returnHandler}></i>
                   </>
             }
 
@@ -42,8 +57,8 @@ const TasksList = props => {
 
          {!searchStatus ?
             <>
-               <h2>Last 3 done tasks:</h2>
                <div className="doneTasks">
+                  <h2>Last 3 done tasks:</h2>
                   <ul>{done}</ul>
                </div>
             </>

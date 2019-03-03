@@ -1,0 +1,17 @@
+.App {
+  background: #1F1F1F;
+  text-align: center;
+  color: #DDDDDD;
+  min-width: 300px;
+  width: 40%;
+  height: 90vh;
+  margin: 5vh auto;
+  border: 1px solid #61DAF7;
+  overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .App {
+    width: 50%;
+  }
+}

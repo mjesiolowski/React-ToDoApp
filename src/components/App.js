@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Input from './Input'
 import TasksList from './TasksList'
 
@@ -53,13 +52,13 @@ class App extends Component {
 
     if (this.state.value.length <= 2) {
       this.setState({
-        alert: !this.state.alert
+        alert: true
       })
     }
 
     else if (duplicateCheck) {
       this.setState({
-        duplicate: !this.state.duplicate
+        duplicate: true
       })
     }
     else {
@@ -93,7 +92,6 @@ class App extends Component {
   }
 
   handleRemovedTask = id => {
-    console.log('ok', id)
     const tasks = [...this.state.tasks]
     const tasksAfterRemoval = tasks.filter((task) => {
       if (task.id !== id) {
@@ -131,7 +129,7 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.alert && this.state.value.length > 2) {
       this.setState({
-        alert: !this.state.alert,
+        alert: false
       })
     }
     else if (prevState.value !== this.state.value) {
@@ -145,13 +143,26 @@ class App extends Component {
     return (
       <div className="App">
 
-        <div className="input">
-          <Input value={this.state.value} input={this.handleInputValue} add={this.handleAddButton} submit={this.handleSubmit} alert={this.state.alert} search={this.handleSearchedTask} duplicate={this.state.duplicate} />
-        </div>
+        <header className="header">
+          <Input
+            value={this.state.value}
+            input={this.handleInputValue}
+            add={this.handleAddButton}
+            submit={this.handleSubmit}
+            alert={this.state.alert}
+            search={this.handleSearchedTask}
+            duplicate={this.state.duplicate} />
+        </header>
 
-        <div className="result">
-          <TasksList tasksToDo={this.state.tasks} doneTask={this.handleDoneTask} searchStatus={this.state.search} searchedTasks={this.state.searchedTasks} returnHandler={this.handleReturn} removedTask={this.handleRemovedTask} />
-        </div>
+        <main className="tasksList">
+          <TasksList
+            tasksToDo={this.state.tasks}
+            doneTask={this.handleDoneTask}
+            searchStatus={this.state.search}
+            searchedTasks={this.state.searchedTasks}
+            returnHandler={this.handleReturn}
+            removedTask={this.handleRemovedTask} />
+        </main>
 
       </div>
     );
