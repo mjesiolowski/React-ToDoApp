@@ -39,17 +39,17 @@ const TasksList = props => {
                !searchStatus ?
                   (active.length > 0 ?
                      <>
-                        <h2 className="tasksList tasksToDo__title">Tasks to do:</h2>
-                        <ul className="tasksList tasksToDo__list">{active}</ul>
+                        <h2 className="tasksToDo__title">Tasks to do:</h2>
+                        <ul className="tasksToDo__list">{active}</ul>
                      </>
                      :
                      <h2>No tasks on list!</h2>)
                   :
                   <>
-                     <h2>Search results:</h2>
-                     <ul>{searched}</ul>
-                     {!searchedTasks.length && <p>No results</p>}
-                     <i className="fas fa-arrow-alt-circle-left" onClick={returnHandler}></i>
+                     <h2 className="searchedTasks__title">Search results:</h2>
+                     <ul className="searchedTasks__list">{searched}</ul>
+                     {!searchedTasks.length && <p className="searchedTasks__item">No results!</p>}
+                     <i className="fas fa-arrow-alt-circle-left searchedTasks__icon" onClick={returnHandler}></i>
                   </>
             }
 
@@ -58,8 +58,8 @@ const TasksList = props => {
          {!searchStatus ?
             <>
                <div className="doneTasks">
-                  <h2>Last 3 done tasks:</h2>
-                  <ul>{done}</ul>
+                  <h2 className="doneTasks__title">Last 3 done tasks:</h2>
+                  <ul className="doneTasks__list">{done}</ul>
                </div>
             </>
             : null}

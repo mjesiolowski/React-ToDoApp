@@ -5,7 +5,7 @@ const DoneTasks = props => {
    const { task } = props
 
    return (
-      <li>{task}</li>
+      <li className="doneTasks__item">{task}</li>
    );
 }
 

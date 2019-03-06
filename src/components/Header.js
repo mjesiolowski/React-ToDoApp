@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Input = props => {
+const Header = props => {
    const { value, input, add, submit, alert, search, duplicate } = props
    return (
       <>
@@ -12,10 +12,10 @@ const Input = props => {
 
             <i className="fas fa-plus-circle header header__icon" onClick={add}></i>
             <i className="fas fa-search header header__icon" onClick={search}></i>
-
-            {alert && <p className="header header__warning-info">Minimum 3 characters required!!</p>}
-            {duplicate && <p className="header header__warning-info">Task already on the list!</p>}
          </form>
+
+         {alert && <p className="header header__warning-info">Minimum 3 characters required!!</p>}
+         {duplicate && <p className="header header__warning-info">Task already on the list!</p>}
 
 
       </>
@@ -23,4 +23,4 @@ const Input = props => {
    );
 }
 
-export default Input;
+export default Header;

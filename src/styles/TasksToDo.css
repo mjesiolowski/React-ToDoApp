@@ -1,0 +1,55 @@
+.tasksToDo {
+   min-height: 25rem;
+   margin-bottom: 3.5rem;
+   border-top: 1px solid #61DAF7;
+}
+
+.tasksToDo__title {
+   margin: 1.5rem auto;
+   font-size: 3.5rem;
+}
+
+.tasksToDo__list {
+   padding: 0;
+   list-style: none;
+}
+
+.tasksToDo__item {
+   width: 60%;
+   padding-bottom: 1.2rem;
+   margin: 0 auto 2rem auto;
+   border-bottom: 1px dashed #61DAF7;
+   font-size: 2.5rem;
+   letter-spacing: .2rem;
+}
+
+.tasksToDo__icon {
+   margin-left: 5rem;
+   cursor: pointer;
+   transition: .2s;
+}
+
+.tasksToDo__icon:hover {
+   color: #61DAF7;
+   transform: scale(1.2)
+}
+
+@media (max-width: 750px) {
+   .tasksToDo__title {
+      font-size: 3rem;
+   }
+
+   .tasksToDo__item {
+      width: 80%;
+   }
+}
+
+@media (max-width: 600px) {
+   .tasksToDo__title {
+      font-size: 2.5rem;
+   }
+
+   .tasksToDo__item {
+      width: 90%;
+   }
+}

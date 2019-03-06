@@ -14,19 +14,18 @@
    flex-wrap: wrap;
    justify-content: space-between;
    align-items: flex-start;
-   height: 10rem;
    width: 70%;
-   padding: 0 2rem;
-   margin: 2rem auto;
-   border-bottom: 1px solid #61DAF7;
+   padding: 0 2rem 0 2rem;
+   margin: 2rem auto 0;
 }
 
 .header__input {
    flex-grow: 1;
-   background: #DDD;
    height: 4rem;
    padding: 0 1.5rem;
+   margin-bottom: 2.5rem;
    border: none;
+   background: #DDD;
    font-size: 1.6rem;
 }
 
@@ -44,5 +43,28 @@
 }
 
 .header__warning-info {
+   margin: 2rem auto;
    font-size: 1.8rem;
+}
+
+@media (max-width: 1050px) {
+   .header__form {
+      justify-content: space-evenly;
+   }
+
+   .header__input {
+      flex-basis: 100%
+   }
+
+   .header__icon {
+      margin: .7rem;
+   }
+}
+
+@media (max-width: 750px) {
+   .header__title {
+      font-size: 3.5rem;
+      letter-spacing: .3rem;
+      line-height: 10rem;
+   }
 }

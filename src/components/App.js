@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Input from './Input'
+import Header from './Header'
 import TasksList from './TasksList'
 
 
@@ -47,8 +47,8 @@ class App extends Component {
   //adding task handlers
 
   handleAddButton = () => {
-    const tasks = [...this.state.tasks]
-    const duplicateCheck = tasks.filter(task => task.text === this.state.value).length
+    const tasksToDo = [...this.state.tasks]
+    const duplicateCheck = tasksToDo.filter(task => task.text === this.state.value && task.active).length
 
     if (this.state.value.length <= 2) {
       this.setState({
@@ -62,7 +62,7 @@ class App extends Component {
       })
     }
     else {
-      tasks.push(
+      tasksToDo.push(
         {
           id: this.idValue,
           text: this.state.value,
@@ -70,7 +70,7 @@ class App extends Component {
         }
       )
       this.setState({
-        tasks,
+        tasks: tasksToDo,
         value: ''
       })
       this.idValue++
@@ -144,7 +144,7 @@ class App extends Component {
       <div className="App">
 
         <header className="header">
-          <Input
+          <Header
             value={this.state.value}
             input={this.handleInputValue}
             add={this.handleAddButton}

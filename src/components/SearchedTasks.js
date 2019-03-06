@@ -5,7 +5,7 @@ const SearchedTasks = props => {
    const { task } = props
 
    return (
-      <li>{task}</li>
+      <li className="searchedTasks__item">{task}</li>
    );
 }
 
