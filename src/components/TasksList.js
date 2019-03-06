@@ -43,7 +43,7 @@ const TasksList = props => {
                         <ul className="tasksToDo__list">{active}</ul>
                      </>
                      :
-                     <h2>No tasks on list!</h2>)
+                     <h2 className="searchedTasks__title">No tasks on your list!</h2>)
                   :
                   <>
                      <h2 className="searchedTasks__title">Search results:</h2>
