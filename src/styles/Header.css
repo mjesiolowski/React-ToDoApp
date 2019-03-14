@@ -9,6 +9,11 @@
    line-height: 15rem;
 }
 
+.header__time {
+   margin: .7rem;
+   font-size: 20px;
+}
+
 .header__form {
    display: flex;
    flex-wrap: wrap;

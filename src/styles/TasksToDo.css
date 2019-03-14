@@ -21,6 +21,11 @@
    border-bottom: 1px dashed #61DAF7;
    font-size: 2.5rem;
    letter-spacing: .2rem;
+   transition: .2s;
+}
+
+.tasksToDo__item:hover {
+   color: #61DAF7;
 }
 
 .tasksToDo__icon {
@@ -30,7 +35,6 @@
 }
 
 .tasksToDo__icon:hover {
-   color: #61DAF7;
    transform: scale(1.2)
 }
 
