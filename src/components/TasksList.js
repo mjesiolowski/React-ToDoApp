@@ -5,7 +5,18 @@ import SearchedTasks from './SearchedTasks'
 
 
 const TasksList = props => {
-   const { tasksToDo, doneTask, searchStatus, returnHandler, searchedTasks, removedTask } = props
+   const {
+      editedValue,
+      handleEditButton,
+      handleEditingTask,
+      handleEditInputValue,
+      handleDoneTaskButton,
+      handleRemoveTaskButton,
+      handleReturnButton,
+      searchSection,
+      searchedTasks,
+      tasksToDo,
+   } = props
 
    const activeTasks = tasksToDo.filter(task => task.active)
 
@@ -14,12 +25,19 @@ const TasksList = props => {
 
    const active = activeTasks.map((task, index) =>
       (<TasksToDo
-         key={task.id}
-         task={task.text}
+         editedValue={editedValue}
          id={task.id}
          index={index}
-         done={doneTask}
-         removed={removedTask} />))
+         key={task.id}
+         task={task.text}
+         taskEdited={task.edited}
+
+         doneTaskHandler={handleDoneTaskButton}
+         editButtonHandler={handleEditButton}
+         editTaskHandler={handleEditingTask}
+         inputHandler={handleEditInputValue}
+         removeButtonHandler={handleRemoveTaskButton}
+      />))
 
    const done = doneTasks.map(task =>
       (<DoneTasks
@@ -36,7 +54,7 @@ const TasksList = props => {
       <>
          <div className="tasksList tasksToDo">
             {
-               !searchStatus ?
+               !searchSection ?
                   (active.length > 0 ?
                      <>
                         <h2 className="tasksToDo__title">Tasks to do:</h2>
@@ -49,13 +67,13 @@ const TasksList = props => {
                      <h2 className="searchedTasks__title">Search results:</h2>
                      <ul className="searchedTasks__list">{searched}</ul>
                      {!searchedTasks.length && <p className="searchedTasks__item">No results!</p>}
-                     <i className="fas fa-arrow-alt-circle-left searchedTasks__icon" onClick={returnHandler}></i>
+                     <i className="fas fa-arrow-alt-circle-left searchedTasks__icon" onClick={handleReturnButton}></i>
                   </>
             }
 
          </div>
 
-         {!searchStatus ?
+         {!searchSection ?
             <>
                <div className="doneTasks">
                   <h2 className="doneTasks__title">Last 3 done tasks:</h2>

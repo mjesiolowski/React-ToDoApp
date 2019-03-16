@@ -16,16 +16,26 @@ class Header extends React.Component {
    }
 
    render() {
-      const { value, input, add, submit, alert, search, duplicate } = this.props
+      const {
+         alert,
+         duplicate,
+         value,
+         handleAddTaskButton,
+         handleHeaderInputValue,
+         handleHeaderInputSubmit,
+         handleSearchTaskButton,
+      }
+         = this.props
+
       return (<>
          <h1 className="header header__title">React ToDoApp</h1>
          <p className="header header__time">{this.state.time}</p>
 
-         <form className="header header__form" onSubmit={submit}>
-            <input className="header header__input" type="text" placeholder="Add or search your task here" value={value} onChange={input} autoFocus />
+         <form className="header header__form" onSubmit={handleHeaderInputSubmit}>
+            <input className="header header__input" type="text" placeholder="Add or search your task here" value={value} onChange={handleHeaderInputValue} autoFocus />
 
-            <i className="fas fa-plus-circle header header__icon" onClick={add}></i>
-            <i className="fas fa-search header header__icon" onClick={search}></i>
+            <i className="fas fa-plus-circle header header__icon" onClick={handleAddTaskButton}></i>
+            <i className="fas fa-search header header__icon" onClick={handleSearchTaskButton}></i>
          </form>
 
          {alert && <p className="header header__warning-info">Minimum 3 characters required!!</p>}

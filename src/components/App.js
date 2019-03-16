@@ -1,84 +1,92 @@
 import React, { Component } from 'react';
 import Header from './Header'
 import TasksList from './TasksList'
+import uuid from 'uuid'
 
 
 class App extends Component {
   state = {
-    value: '',
-    alert: false,
-    duplicate: false,
+    editedInputValue: '',
+    headerInputValue: '',
+    minimalTaskLengthAlert: false,
+    searchSectionActive: false,
+    searchedTasks: [],
+    taskDuplicatedAlert: false,
     tasks: [
       {
-        id: 0,
+        id: uuid(),
         text: "Task 1",
         active: true,
+        edited: false,
       },
       {
-        id: 1,
+        id: uuid(),
         text: "Task 2",
         active: true,
+        edited: false,
       },
       {
-        id: 2,
+        id: uuid(),
         text: "Task 3",
         active: true,
+        edited: false,
       },
     ],
-    search: false,
-    searchedTasks: []
   }
 
-  idValue = 3;
+  //INPUT HANDLERS
 
-  //Input handlers
-
-  handleInputValue = e => {
+  handleHeaderInputValue = e => {
     this.setState({
-      value: e.target.value
+      headerInputValue: e.target.value
     })
   }
 
-  handleSubmit = e => {
+  handleHeaderInputSubmit = e => {
     e.preventDefault()
-    this.handleAddButton()
+    this.handleAddTaskButton()
   }
 
-  //adding task handlers
+  handleEditInputValue = e => {
+    this.setState(({
+      editedInputValue: e.target.value
+    }))
+  }
 
-  handleAddButton = () => {
+  //ADDING TASK
+  handleAddTaskButton = () => {
     const tasksToDo = [...this.state.tasks]
-    const duplicateCheck = tasksToDo.filter(task => task.text === this.state.value && task.active).length
+    const duplicateCheck = tasksToDo.filter(task => task.text === this.state.headerInputValue && task.active).length
 
-    if (this.state.value.length <= 2) {
+    if (this.state.headerInputValue.length <= 2) {
       this.setState({
-        alert: true
+        minimalTaskLengthAlert: true
       })
     }
 
     else if (duplicateCheck) {
       this.setState({
-        duplicate: true
+        taskDuplicatedAlert: true
       })
     }
     else {
       tasksToDo.push(
         {
-          id: this.idValue,
-          text: this.state.value,
+          id: uuid(),
+          text: this.state.headerInputValue,
           active: true,
+          edited: false,
         }
       )
       this.setState({
         tasks: tasksToDo,
-        value: ''
+        headerInputValue: ''
       })
-      this.idValue++
     }
   }
 
-  // changing task status handlers
-  handleDoneTask = id => {
+  //CHANGING TASK STATUS
+  handleDoneTaskButton = id => {
     const tasks = [...this.state.tasks]
     tasks.forEach(task => {
       if (task.id === id) {
@@ -91,7 +99,47 @@ class App extends Component {
     })
   }
 
-  handleRemovedTask = id => {
+  //EDITING TASK
+  handleEditButton = (id, task) => {
+    if (!this.state.editedInputValue) {
+      this.setState({
+        editedInputValue: task
+      })
+
+      const tasks = [...this.state.tasks]
+      tasks.forEach(task => {
+        if (task.id === id) {
+          task.edited = !task.edited
+        }
+      })
+      this.setState({
+        tasks,
+      })
+    }
+  }
+
+  handleEditingTask = (e, id) => {
+    e.preventDefault()
+    const tasks = [...this.state.tasks]
+
+    if (this.state.editedInputValue.length < 3) { alert('Task too short') }
+    else {
+      tasks.map(task => {
+        if (task.id === id) {
+          task.text = this.state.editedInputValue
+          task.edited = false
+        } return null
+      })
+
+      this.setState(() => ({
+        editedInputValue: '',
+        tasks,
+      }))
+    }
+  }
+
+  //REMOVING TASK
+  handleRemoveTaskButton = id => {
     const tasks = [...this.state.tasks]
     const tasksAfterRemoval = tasks.filter((task) => {
       if (task.id !== id) {
@@ -104,40 +152,44 @@ class App extends Component {
     })
   }
 
-  //searching handlers
-  handleSearchedTask = () => {
+  //SEARCHING TASK
+  handleSearchTaskButton = () => {
     const tasks = [...this.state.tasks]
 
-    if (this.state.value.length) {
-      const searchResult = tasks.filter((result) => result.text.toLowerCase().includes(this.state.value.trim().toLowerCase()) && result.active
+    if (this.state.headerInputValue.length) {
+      const searchResult = tasks.filter((result) => result.text.toLowerCase().includes(this.state.headerInputValue.trim().toLowerCase()) && result.active
       )
 
       this.setState({
-        value: '',
-        search: true,
+        headerInputValue: '',
+        searchSectionActive: true,
         searchedTasks: [...searchResult]
       })
     }
   }
 
-  handleReturn = () => {
+  handleReturnButton = () => {
     this.setState({
-      search: false,
+      searchSectionActive: false,
     })
   }
 
+  //ALERT HANDLERS
+
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.alert && this.state.value.length > 2) {
+    if (this.state.minimalTaskLengthAlert && this.state.headerInputValue.length > 2) {
       this.setState({
-        alert: false
+        minimalTaskLengthAlert: false
       })
     }
-    else if (prevState.value !== this.state.value) {
+    else if (prevState.headerInputValue !== this.state.headerInputValue) {
       this.setState({
-        duplicate: false
+        taskDuplicatedAlert: false
       })
     }
   }
+
+  //RENDERING
 
   render() {
     return (
@@ -145,23 +197,31 @@ class App extends Component {
 
         <header className="header">
           <Header
-            value={this.state.value}
-            input={this.handleInputValue}
-            add={this.handleAddButton}
-            submit={this.handleSubmit}
-            alert={this.state.alert}
-            search={this.handleSearchedTask}
-            duplicate={this.state.duplicate} />
+            alert={this.state.minimalTaskLengthAlert}
+            duplicate={this.state.taskDuplicatedAlert}
+            value={this.state.headerInputValue}
+
+            handleAddTaskButton={this.handleAddTaskButton}
+            handleHeaderInputSubmit={this.handleHeaderInputSubmit}
+            handleHeaderInputValue={this.handleHeaderInputValue}
+            handleSearchTaskButton={this.handleSearchTaskButton}
+          />
         </header>
 
         <main className="tasksList">
           <TasksList
-            tasksToDo={this.state.tasks}
-            doneTask={this.handleDoneTask}
-            searchStatus={this.state.search}
+            editedValue={this.state.editedInputValue}
+            searchSection={this.state.searchSectionActive}
             searchedTasks={this.state.searchedTasks}
-            returnHandler={this.handleReturn}
-            removedTask={this.handleRemovedTask} />
+            tasksToDo={this.state.tasks}
+
+            handleEditButton={this.handleEditButton}
+            handleEditInputValue={this.handleEditInputValue}
+            handleEditingTask={this.handleEditingTask}
+            handleDoneTaskButton={this.handleDoneTaskButton}
+            handleReturnButton={this.handleReturnButton}
+            handleRemoveTaskButton={this.handleRemoveTaskButton}
+          />
         </main>
 
       </div>
