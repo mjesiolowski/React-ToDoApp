@@ -52,13 +52,21 @@ const TasksList = props => {
 
    return (
       <>
-         <div className="tasksList tasksToDo">
+         <div className="tasksList">
+
             {
                !searchSection ?
                   (active.length > 0 ?
                      <>
-                        <h2 className="tasksToDo__title">Tasks to do:</h2>
-                        <ul className="tasksToDo__list">{active}</ul>
+                        <div className="tasksToDo">
+                           <h2 className="tasksToDo__title">Tasks to do:</h2>
+                           <ul className="tasksToDo__list">{active}</ul>
+                        </div>
+
+                        <div className="doneTasks">
+                           <h2 className="doneTasks__title">Last 3 done tasks:</h2>
+                           <ul className="doneTasks__list">{done}</ul>
+                        </div>
                      </>
                      :
                      <h2 className="searchedTasks__title">No tasks on your list!</h2>)
@@ -72,17 +80,6 @@ const TasksList = props => {
             }
 
          </div>
-
-         {!searchSection ?
-            <>
-               <div className="doneTasks">
-                  <h2 className="doneTasks__title">Last 3 done tasks:</h2>
-                  <ul className="doneTasks__list">{done}</ul>
-               </div>
-            </>
-            : null}
-
-
       </>
    );
 }

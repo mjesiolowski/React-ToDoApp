@@ -20,7 +20,7 @@ const TasksToDo = props => {
    return (
       <>
          {taskEdited ? <form onSubmit={(e) => editTaskHandler(e, id)}>
-            <input className="taksToDo taskToDo__input" value={editedValue} onChange={inputHandler} autoFocus />
+            <input className="taskToDo__input" value={editedValue} onChange={inputHandler} autoFocus />
          </form>
             :
             <li className="tasksToDo__item">

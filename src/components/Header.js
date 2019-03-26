@@ -28,18 +28,18 @@ class Header extends React.Component {
          = this.props
 
       return (<>
-         <h1 className="header header__title">React ToDoApp</h1>
-         <p className="header header__time">{this.state.time}</p>
+         <h1 className="header__title">React ToDoApp</h1>
+         <p className="header__time">{this.state.time}</p>
 
-         <form className="header header__form" onSubmit={handleHeaderInputSubmit}>
-            <input className="header header__input" type="text" placeholder="Add or search your task here" value={value} onChange={handleHeaderInputValue} autoFocus />
+         <form className="header__form" onSubmit={handleHeaderInputSubmit}>
+            <input className="header__form__input" type="text" placeholder="Add or search your task here" value={value} onChange={handleHeaderInputValue} autoFocus />
 
-            <i className="fas fa-plus-circle header header__icon" onClick={handleAddTaskButton}></i>
-            <i className="fas fa-search header header__icon" onClick={handleSearchTaskButton}></i>
+            <i className="fas fa-plus-circle header__form__icon" onClick={handleAddTaskButton}></i>
+            <i className="fas fa-search header__form__icon" onClick={handleSearchTaskButton}></i>
          </form>
 
-         {alert && <p className="header header__warning-info">Minimum 3 characters required!!</p>}
-         {duplicate && <p className="header header__warning-info">Task already on the list!</p>}
+         {alert && <p className="header__warning-info">Minimum 3 characters required!!</p>}
+         {duplicate && <p className="header__warning-info">Task already on the list!</p>}
 
 
       </>);
