@@ -1,5 +1,7 @@
 import React from 'react';
-import moment from 'moment'
+// import moment from 'moment'
+import { connect } from 'react-redux'
+import { addTask } from '../redux/tasksActions'
 
 
 class Header extends React.Component {
@@ -7,26 +9,26 @@ class Header extends React.Component {
       time: null
    }
 
-   componentDidMount() {
-      setInterval(() => {
-         this.setState({
-            time: moment().format('DD.MM.YYYY, HH:mm:ss')
-         })
-      }, 1000)
-   }
+   // componentDidMount() {
+   //    setInterval(() => {
+   //       this.setState({
+   //          time: moment().format('DD.MM.YYYY, HH:mm:ss')
+   //       })
+   //    }, 1000)
+   // }
 
    render() {
       const {
          alert,
          duplicate,
          value,
-         handleAddTaskButton,
+         // handleAddTaskButton,
          handleHeaderInputValue,
          handleHeaderInputSubmit,
          handleSearchTaskButton,
       }
          = this.props
-
+      console.log(this.props.tasks)
       return (<>
          <h1 className="header__title">React ToDoApp</h1>
          <p className="header__time">{this.state.time}</p>
@@ -34,7 +36,7 @@ class Header extends React.Component {
          <form className="header__form" onSubmit={handleHeaderInputSubmit}>
             <input className="header__form__input" type="text" placeholder="Add or search your task here" value={value} onChange={handleHeaderInputValue} autoFocus />
 
-            <i className="fas fa-plus-circle header__form__icon" onClick={handleAddTaskButton}></i>
+            <i className="fas fa-plus-circle header__form__icon" onClick={this.props.addTask}></i>
             <i className="fas fa-search header__form__icon" onClick={handleSearchTaskButton}></i>
          </form>
 
@@ -46,5 +48,10 @@ class Header extends React.Component {
    }
 }
 
+const mapDispatchToProps = dispatch => {
+   return {
+      addTask: () => dispatch(addTask("moje nowe zadanie"))
+   }
+}
 
-export default Header;
+export default connect(null, mapDispatchToProps)(Header);

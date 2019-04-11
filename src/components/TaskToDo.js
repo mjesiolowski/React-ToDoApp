@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TasksToDo = props => {
+const TaskToDo = props => {
    const {
       doneTaskHandler,
       editButtonHandler,
@@ -15,7 +15,7 @@ const TasksToDo = props => {
       removeButtonHandler,
    } = props
 
-
+   console.log(props.task)
 
    return (
       <>
@@ -37,5 +37,5 @@ const TasksToDo = props => {
 
 
 
-export default TasksToDo;
+export default TaskToDo;
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import TasksToDo from './TasksToDo'
+import TaskToDo from './TaskToDo'
 import DoneTasks from './DoneTasks'
 import SearchedTasks from './SearchedTasks'
+import { connect } from 'react-redux'
 
 
 const TasksList = props => {
@@ -18,26 +19,29 @@ const TasksList = props => {
       tasksToDo,
    } = props
 
-   const activeTasks = tasksToDo.filter(task => task.active)
+   // const activeTasks = tasksToDo.filter(task => task.active)
 
    let doneTasks = tasksToDo.filter(task => !task.active)
    doneTasks = doneTasks.sort((taskA, taskB) => taskB.time - taskA.time).slice(0, 3)
 
-   const active = activeTasks.map((task, index) =>
-      (<TasksToDo
-         editedValue={editedValue}
-         id={task.id}
-         index={index}
-         key={task.id}
-         task={task.text}
-         taskEdited={task.edited}
+   const taskToDo = props.tasks.map((task, index) =>
+      (
+         <TaskToDo
+            key={task.id}
+            editedValue={editedValue}
+            index={index}
 
-         doneTaskHandler={handleDoneTaskButton}
-         editButtonHandler={handleEditButton}
-         editTaskHandler={handleEditingTask}
-         inputHandler={handleEditInputValue}
-         removeButtonHandler={handleRemoveTaskButton}
-      />))
+            id={task.id}
+            task={task.text}
+            taskEdited={task.edited}
+
+
+            doneTaskHandler={handleDoneTaskButton}
+            editButtonHandler={handleEditButton}
+            editTaskHandler={handleEditingTask}
+            inputHandler={handleEditInputValue}
+            removeButtonHandler={handleRemoveTaskButton}
+         />))
 
    const done = doneTasks.map(task =>
       (<DoneTasks
@@ -56,11 +60,11 @@ const TasksList = props => {
 
             {
                !searchSection ?
-                  (active.length > 0 ?
+                  (taskToDo.length > 0 ?
                      <>
                         <div className="tasksToDo">
                            <h2 className="tasksToDo__title">Tasks to do:</h2>
-                           <ul className="tasksToDo__list">{active}</ul>
+                           <ul className="tasksToDo__list">{taskToDo}</ul>
                         </div>
 
                         <div className="doneTasks">
@@ -84,5 +88,11 @@ const TasksList = props => {
    );
 }
 
-export default TasksList
+const mapStateToProps = state => {
+   return {
+      tasks: state.tasks
+   }
+}
+
+export default connect(mapStateToProps)(TasksList)
 
