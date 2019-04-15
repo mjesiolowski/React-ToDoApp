@@ -1,26 +1,26 @@
 import uuid from 'uuid'
 
-const tasksReducerDefaultState = [{
-   id: '123',
-   text: "Task 1",
-   active: true,
-   edited: false,
-},
-{
-   id: uuid(),
-   text: "Task 2",
-   active: true,
-   edited: false,
-},
-{
-   id: uuid(),
-   text: "Task 3",
-   active: true,
-   edited: false,
-},
+const taskReducerDefaultState = [{
+      id: '123',
+      text: "Task 1",
+      active: true,
+      edited: false,
+   },
+   {
+      id: uuid(),
+      text: "Task 2",
+      active: true,
+      edited: false,
+   },
+   {
+      id: uuid(),
+      text: "Task 3",
+      active: true,
+      edited: false,
+   },
 ]
 
-export const tasksReducer = (state = tasksReducerDefaultState, action) => {
+export const taskReducer = (state = taskReducerDefaultState, action) => {
    switch (action.type) {
       case 'ADD_TASK':
          return [
@@ -30,7 +30,6 @@ export const tasksReducer = (state = tasksReducerDefaultState, action) => {
       case 'EDIT_TASK':
          return state.map(task => {
             if (task.id === action.id) {
-               console.log(task)
                return {
                   ...task,
                   ...action.update
