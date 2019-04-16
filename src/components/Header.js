@@ -2,7 +2,7 @@ import React from 'react';
 // import moment from 'moment'
 import { connect } from 'react-redux'
 import { addTask } from '../redux/taskActions'
-import { addInput } from '../redux/inputAction'
+import { addInput } from '../redux/inputActions'
 import { lengthAlert } from '../redux/alertActions'
 import { duplicateAlert } from '../redux/alertActions'
 
@@ -47,11 +47,11 @@ class Header extends React.Component {
    }
 
    duplicateCheck() {
-      return !this.props.tasks.filter(task => task.text.toLowerCase() === this.props.inputValue.toLowerCase()).length > 0
+      return this.props.tasks.find(task => task.text.toLowerCase() === this.props.inputValue.toLowerCase()) === undefined
    }
 
    lengthCheck() {
-      return this.props.inputValue.length > 2
+      return this.props.inputValue.trim().length > 2
    }
 
    render() {
@@ -67,7 +67,7 @@ class Header extends React.Component {
          handleSearchTaskButton,
       }
          = this.props
-      console.log(this.duplicateCheck())
+
       return (<>
          <h1 className="header__title">React ToDoApp</h1>
          <p className="header__time">{this.state.time}</p>
@@ -90,22 +90,21 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => {
-   const { alerts, input } = state
+   const { alerts, addInput } = state
    return {
       tasks: state.tasks,
       lengthAlertMsg: alerts.minimalTaskLengthAlert,
       duplicateAlertMsg: alerts.taskDuplicatedAlert,
-      inputValue: input
+      inputValue: addInput
    }
 }
 
-const mapDispatchToProps = dispatch => {
-   return {
-      addTaskAction: text => dispatch(addTask(text)),
-      lengthAlertAction: isTrue => dispatch(lengthAlert(isTrue)),
-      duplicateAlertAction: isTrue => dispatch(duplicateAlert(isTrue)),
-      inputHandlerAction: event => dispatch(addInput(event))
-   }
-}
+const mapDispatchToProps = dispatch => ({
+   addTaskAction: text => dispatch(addTask(text)),
+   lengthAlertAction: isTrue => dispatch(lengthAlert(isTrue)),
+   duplicateAlertAction: isTrue => dispatch(duplicateAlert(isTrue)),
+   inputHandlerAction: event => dispatch(addInput(event))
+})
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

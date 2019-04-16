@@ -8,7 +8,7 @@ export const addTask = (
    type: "ADD_TASK",
    task: {
       id: uuid(),
-      text,
+      text: text.trim(),
       active,
       edited
    }

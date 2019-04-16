@@ -32,7 +32,7 @@ const TasksList = props => {
             index={index}
 
             id={task.id}
-            task={task.text}
+            taskText={task.text}
             taskEdited={task.edited}
 
 
@@ -73,7 +73,13 @@ const TasksList = props => {
                         </div>
                      </>
                      :
-                     <h2 className="searchedTasks__title">No tasks on your list!</h2>)
+                     <>
+                        <h2 className="searchedTasks__title">No tasks on your list!</h2>
+                        <div className="doneTasks">
+                           <h2 className="doneTasks__title">Last 3 done tasks:</h2>
+                           <ul className="doneTasks__list">{done}</ul>
+                        </div>
+                     </>)
                   :
                   <>
                      <h2 className="searchedTasks__title">Search results:</h2>
@@ -88,11 +94,10 @@ const TasksList = props => {
    );
 }
 
-const mapStateToProps = state => {
-   return {
-      tasks: state.tasks
-   }
-}
+const mapStateToProps = state => ({
+   tasks: state.tasks
+})
+
 
 export default connect(mapStateToProps)(TasksList)
 
