@@ -1,5 +1,5 @@
 import React from 'react';
-// import moment from 'moment'
+import moment from 'moment'
 import { connect } from 'react-redux'
 import { addTask } from '../redux/taskActions'
 import { addInput } from '../redux/inputActions'
@@ -16,19 +16,12 @@ class Header extends React.Component {
       time: null
    }
 
-   // componentDidMount() {
-   //    setInterval(() => {
-   //       this.setState({
-   //          time: moment().format('DD.MM.YYYY, HH:mm:ss')
-   //       })
-   //    }, 1000)
-   // }
-
-
-   clearAlerts() {
-      this.props.inputHandlerAction('')
-      this.props.lengthAlertAction(false)
-      this.props.duplicateAlertAction(false)
+   componentDidMount() {
+      setInterval(() => {
+         this.setState({
+            time: moment().format('DD.MM.YYYY, HH:mm:ss')
+         })
+      }, 1000)
    }
 
    componentDidUpdate() {
@@ -37,6 +30,20 @@ class Header extends React.Component {
       if (this.lengthCheck()) {
          this.props.lengthAlertAction(false)
       }
+   }
+
+   clearAlerts() {
+      this.props.inputHandlerAction('')
+      this.props.lengthAlertAction(false)
+      this.props.duplicateAlertAction(false)
+   }
+
+   duplicateCheck() {
+      return this.props.tasks.find(task => task.text.toLowerCase().trim() === this.props.inputValue.toLowerCase().trim() && task.active) === undefined
+   }
+
+   lengthCheck() {
+      return this.props.inputValue.trim().length > 2
    }
 
    inputHandler(e) {
@@ -60,27 +67,13 @@ class Header extends React.Component {
       this.props.searchAlertAction(true)
    }
 
-   duplicateCheck() {
-      return this.props.tasks.find(task => task.text.toLowerCase() === this.props.inputValue.toLowerCase()) === undefined
-   }
-
-   lengthCheck() {
-      return this.props.inputValue.trim().length > 2
-   }
 
    render() {
       const {
          inputValue,
-         // alert,
          duplicateAlertMsg,
          lengthAlertMsg,
-         // value,
-         // handleAddTaskButton,
-         // handleHeaderInputValue,
-         // handleHeaderInputSubmit,
-         // handleSearchTaskButton,
-      }
-         = this.props
+      } = this.props
 
       return (<>
          <h1 className="header__title">React ToDoApp</h1>

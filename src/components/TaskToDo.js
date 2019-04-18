@@ -8,37 +8,35 @@ import { editAlert } from '../redux/alertActions'
 const TaskToDo = props => {
 
    const {
-      editTaskAction,
-      inputHandlerAction,
-      doneTaskAction,
-      inputValue,
-      editAlertMsg,
-      editAlertAction,
-      removeTaskAction,
-      // editButtonHandler,
-      // editedValue,
-      // editTaskHandler,
+      tasks,
       id,
       index,
-      // inputHandler,
-      tasks,
       taskText,
       taskEdited,
+
+      inputValue,
+      inputHandlerAction,
+
+      editTaskAction,
+      doneTaskAction,
+      removeTaskAction,
+
+      editAlertMsg,
+      editAlertAction,
    } = props
 
-   // const checkIfEdited = () => props.tasks.filter(task => task.edited).length
+
+   const duplicateCheck = () => tasks.find(task => {
+      if (task.id !== props.id) return task.text.toLowerCase().trim() === inputValue.toLowerCase().trim() && task.active
+      else return null
+   }) === undefined
+
+   const lengthCheck = () => props.inputValue.trim().length > 2
 
    const inputHandler = (e) => {
       editAlertAction(false)
       inputHandlerAction(e.target.value)
    }
-
-   const duplicateCheck = () => tasks.find(task => {
-      if (task.id !== props.id) return task.text.toLowerCase() === inputValue.toLowerCase()
-      else return null
-   }) === undefined
-
-   const lengthCheck = () => props.inputValue.trim().length > 2
 
    const editButtonHandler = (id, edited) => {
       inputHandlerAction(taskText)

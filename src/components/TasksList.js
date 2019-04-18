@@ -8,31 +8,19 @@ import { searchAlert } from '../redux/alertActions'
 
 const TasksList = props => {
    const {
+      tasks,
       editedValue,
+
       handleEditButton,
       handleEditingTask,
       handleEditInputValue,
       handleDoneTaskButton,
       handleRemoveTaskButton,
-      // handleReturnButton,
-      // searchSection,
 
-      // tasksToDo,
-
-      tasks,
       searchAlertAction,
       searchAlertMsg,
       searchedTasks,
    } = props
-
-   // const activeTasks = tasksToDo.filter(task => task.active)
-
-   const handleReturnButton = () => {
-      searchAlertAction(false)
-   }
-
-   let doneTasks = tasks.filter(task => !task.active)
-   doneTasks = doneTasks.sort((taskA, taskB) => taskB.time - taskA.time).slice(0, 3)
 
 
    const taskToDo = tasks.filter(task => task.active).map((task, index) =>
@@ -53,6 +41,9 @@ const TasksList = props => {
             removeButtonHandler={handleRemoveTaskButton}
          />))
 
+   let doneTasks = tasks.filter(task => !task.active)
+   doneTasks = doneTasks.sort((taskA, taskB) => taskB.time - taskA.time).slice(0, 3)
+
    const done = doneTasks.map(task =>
       (<DoneTasks
          key={task.id}
@@ -63,6 +54,9 @@ const TasksList = props => {
          key={task.id}
          task={task.text} />))
 
+   const handleReturnButton = () => {
+      searchAlertAction(false)
+   }
 
    return (
       <>
