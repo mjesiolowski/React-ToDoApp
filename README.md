@@ -12,7 +12,6 @@ Rules:
 - the remove button deletes your task permanently
 
 Technology used:
-- React (CRA)
+- React
+- Redux
 - CSS + BEM
-
-I intend to add Redux in the nearest future.
