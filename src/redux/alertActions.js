@@ -13,6 +13,11 @@ export const editAlert = isTrue => ({
    isTrue
 })
 
+export const editionActive = isTrue => ({
+   type: 'EDITION_ACTIVE',
+   isTrue
+})
+
 export const searchAlert = isTrue => ({
    type: 'SEARCH_ALERT',
    isTrue

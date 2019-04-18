@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { editTask, removeTask, doneTask } from '../redux/taskActions'
 import { editInput } from '../redux/inputActions'
-import { editAlert } from '../redux/alertActions'
+import { editAlert, editionActive } from '../redux/alertActions'
 
 
 const TaskToDo = props => {
@@ -23,6 +23,8 @@ const TaskToDo = props => {
 
       editAlertMsg,
       editAlertAction,
+      isEditionActiveAction,
+      isEditionActive,
    } = props
 
 
@@ -39,8 +41,11 @@ const TaskToDo = props => {
    }
 
    const editButtonHandler = (id, edited) => {
-      inputHandlerAction(taskText)
-      editTaskAction(id, edited)
+      if (!isEditionActive) {
+         inputHandlerAction(taskText)
+         editTaskAction(id, edited)
+      }
+      isEditionActiveAction(true)
    }
 
    const editTaskHandler = (e, id) => {
@@ -49,7 +54,9 @@ const TaskToDo = props => {
          editAlertAction(false)
          editTaskAction(id, { text: inputValue.trim() })
          editTaskAction(id, { edited: false })
+         isEditionActiveAction(false)
       } else editAlertAction(true)
+
    }
 
    return (
@@ -79,7 +86,8 @@ const mapStateToProps = state => {
    return {
       inputValue: editInput,
       tasks,
-      editAlertMsg: alerts.editAlert
+      editAlertMsg: alerts.editAlert,
+      isEditionActive: alerts.isEditionActive,
    }
 }
 
@@ -88,7 +96,8 @@ const mapDispatchToProps = dispatch => ({
    removeTaskAction: id => dispatch(removeTask(id)),
    doneTaskAction: id => dispatch(doneTask(id)),
    inputHandlerAction: text => dispatch(editInput(text)),
-   editAlertAction: isTrue => dispatch(editAlert(isTrue))
+   editAlertAction: isTrue => dispatch(editAlert(isTrue)),
+   isEditionActiveAction: isTrue => dispatch(editionActive(isTrue)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskToDo);
