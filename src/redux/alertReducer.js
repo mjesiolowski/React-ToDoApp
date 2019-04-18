@@ -2,6 +2,7 @@ const alertReducerDefaultState = {
    minimalTaskLengthAlert: false,
    taskDuplicatedAlert: false,
    editAlert: false,
+   searchAlert: false
 }
 
 export const alertReducer = (state = alertReducerDefaultState, action) => {
@@ -21,6 +22,12 @@ export const alertReducer = (state = alertReducerDefaultState, action) => {
          return {
             ...state,
             editAlert: action.isTrue
+         }
+
+      case 'SEARCH_ALERT':
+         return {
+            ...state,
+            searchAlert: action.isTrue
          }
 
       default:

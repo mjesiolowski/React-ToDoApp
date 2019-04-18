@@ -24,3 +24,8 @@ export const removeTask = (id) => ({
    type: "REMOVE_TASK",
    id
 })
+
+export const doneTask = (id) => ({
+   type: "DONE_TASK",
+   id
+})

@@ -212,14 +212,14 @@ class App extends Component {
           <TasksList
             editedValue={this.state.editedInputValue}
             searchSection={this.state.searchSectionActive}
-            searchedTasks={this.state.searchedTasks}
+            // searchedTasks={this.state.searchedTasks}
             tasksToDo={this.state.tasks}
 
             handleEditButton={this.handleEditButton}
             handleEditInputValue={this.handleEditInputValue}
             handleEditingTask={this.handleEditingTask}
             handleDoneTaskButton={this.handleDoneTaskButton}
-            handleReturnButton={this.handleReturnButton}
+            // handleReturnButton={this.handleReturnButton}
             handleRemoveTaskButton={this.handleRemoveTaskButton}
           />
         </main>

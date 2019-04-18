@@ -5,6 +5,9 @@ import { addTask } from '../redux/taskActions'
 import { addInput } from '../redux/inputActions'
 import { lengthAlert } from '../redux/alertActions'
 import { duplicateAlert } from '../redux/alertActions'
+import { searchAlert } from '../redux/alertActions'
+import { searchButton } from '../redux/searchAction'
+import { searchTask } from '../redux/searchAction'
 
 
 
@@ -20,6 +23,13 @@ class Header extends React.Component {
    //       })
    //    }, 1000)
    // }
+
+
+   clearAlerts() {
+      this.props.inputHandlerAction('')
+      this.props.lengthAlertAction(false)
+      this.props.duplicateAlertAction(false)
+   }
 
    componentDidUpdate() {
       if (this.duplicateCheck())
@@ -37,13 +47,17 @@ class Header extends React.Component {
       e.preventDefault()
       if (this.lengthCheck() && this.duplicateCheck()) {
          this.props.addTaskAction(this.props.inputValue)
-         this.props.inputHandlerAction('')
-         this.props.lengthAlertAction(false)
-         this.props.duplicateAlertAction(false)
+         this.clearAlerts()
       }
       else if (!this.lengthCheck()) { this.props.lengthAlertAction(true) }
       else { this.props.duplicateAlertAction(true) }
+   }
 
+   searchTaskHandler() {
+      this.clearAlerts()
+      this.props.searchButtonAction(this.props.tasks)
+      this.props.searchTaskAction(this.props.inputValue)
+      this.props.searchAlertAction(true)
    }
 
    duplicateCheck() {
@@ -64,7 +78,7 @@ class Header extends React.Component {
          // handleAddTaskButton,
          // handleHeaderInputValue,
          // handleHeaderInputSubmit,
-         handleSearchTaskButton,
+         // handleSearchTaskButton,
       }
          = this.props
 
@@ -78,7 +92,7 @@ class Header extends React.Component {
             <i className="fas fa-plus-circle header__form__icon"
                onClick={(e) => this.addTaskHandler(e)}></i>
 
-            <i className="fas fa-search header__form__icon" onClick={handleSearchTaskButton}></i>
+            <i className="fas fa-search header__form__icon" onClick={() => this.searchTaskHandler()}></i>
          </form>
 
          {lengthAlertMsg && <p className="header__warning-info">Minimum 3 characters required!!</p>}
@@ -101,8 +115,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
    addTaskAction: text => dispatch(addTask(text)),
+   searchButtonAction: tasks => dispatch(searchButton(tasks)),
+   searchTaskAction: text => dispatch(searchTask(text)),
    lengthAlertAction: isTrue => dispatch(lengthAlert(isTrue)),
    duplicateAlertAction: isTrue => dispatch(duplicateAlert(isTrue)),
+   searchAlertAction: isTrue => dispatch(searchAlert(isTrue)),
    inputHandlerAction: event => dispatch(addInput(event))
 })
 

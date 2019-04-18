@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { editTask, removeTask } from '../redux/taskActions'
+import { editTask, removeTask, doneTask } from '../redux/taskActions'
 import { editInput } from '../redux/inputActions'
 import { editAlert } from '../redux/alertActions'
 
@@ -10,7 +10,7 @@ const TaskToDo = props => {
    const {
       editTaskAction,
       inputHandlerAction,
-      doneTaskHandler,
+      doneTaskAction,
       inputValue,
       editAlertMsg,
       editAlertAction,
@@ -47,7 +47,6 @@ const TaskToDo = props => {
 
    const editTaskHandler = (e, id) => {
       e.preventDefault()
-      console.log(id)
       if (lengthCheck() && duplicateCheck()) {
          editAlertAction(false)
          editTaskAction(id, { text: inputValue.trim() })
@@ -68,8 +67,8 @@ const TaskToDo = props => {
             <li className="tasksToDo__item">
                {index + 1}. {taskText}
                {taskText.length > 10 && <br></br>}
-               <i id={id} className="fas fa-check tasksToDo__icon" onClick={() => doneTaskHandler(id)}></i>
-               <i id={id} className="fas fa-trash tasksToDo__icon" onClick={(id) => removeTaskAction(props.id)}></i>
+               <i id={id} className="fas fa-check tasksToDo__icon" onClick={() => doneTaskAction(props.id)}></i>
+               <i id={id} className="fas fa-trash tasksToDo__icon" onClick={() => removeTaskAction(props.id)}></i>
                <i id={id} className="fas fa-edit tasksToDo__icon" onClick={() => editButtonHandler(id, { edited: 'true' })}></i>
             </li>}
 
@@ -89,6 +88,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
    editTaskAction: (id, update) => dispatch(editTask(id, update)),
    removeTaskAction: id => dispatch(removeTask(id)),
+   doneTaskAction: id => dispatch(doneTask(id)),
    inputHandlerAction: text => dispatch(editInput(text)),
    editAlertAction: isTrue => dispatch(editAlert(isTrue))
 })

@@ -38,6 +38,19 @@ export const taskReducer = (state = taskReducerDefaultState, action) => {
                return task
             }
          })
+
+      case 'DONE_TASK':
+         return state.map(task => {
+            if (task.id === action.id) {
+               return {
+                  ...task,
+                  ...task.active = false,
+                  ...task.time = new Date().getTime()
+               }
+            } else {
+               return task
+            }
+         })
       case 'REMOVE_TASK':
          return state.filter(task => task.id !== action.id)
 
