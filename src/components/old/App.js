@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from './Header'
-import TasksList from './TasksList'
+import Header from '../Header'
+import TasksList from '../TasksList'
 
 class App extends Component {
 
