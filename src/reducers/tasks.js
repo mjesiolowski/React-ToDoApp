@@ -7,10 +7,7 @@ const tasksReducerDefaultState = [{
    active: true,
    createdAt: moment().valueOf(),
    isPriority: false,
-   comments: [{
-      id: 'qwerty',
-      comment: 'test'
-   }]
+   comments: []
 
 },
 {

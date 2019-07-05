@@ -35,12 +35,13 @@ export const doneTask = (id) => ({
    id
 })
 
-export const addComment = (id, comment) => ({
+export const addComment = (id, text) => ({
    type: "ADD_COMMENT",
    id,
    comment: {
       id: uuid(),
-      comment
+      text,
+      createdAt: moment().valueOf(),
    }
 })
 
