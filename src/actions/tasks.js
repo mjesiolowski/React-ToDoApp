@@ -42,6 +42,7 @@ export const addComment = (id, text) => ({
       id: uuid(),
       text,
       createdAt: moment().valueOf(),
+      beingEdited: false
    }
 })
 

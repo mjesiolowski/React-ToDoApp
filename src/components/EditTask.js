@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import moment from 'moment'
 import uuid from 'uuid'
-import EditComments from './EditComments'
+import Comment from './Comment'
+import AddComment from './AddComment'
 
 const EditTask = ({ task }) => {
 
    const [taskName, setTaskName] = useState(task.name)
    const [taskPriority, setTaskPriority] = useState(task.isPriority)
+
 
    // const renderComments = () => task.comments.map((comment) =>
    //    <li key={comment.id}>
@@ -16,10 +18,14 @@ const EditTask = ({ task }) => {
    //       <p>{moment(comment.createdAt).format('DD-MM-YYYY')}</ p>
    //    </li>
    // )
-   console.log(task.comments)
-   const renderComments = () => task.comments.map((comment) =>
-      <EditComments
+   // console.log(task.comments)
+
+   const sortComments = () => task.comments.sort((a, b) => a.createdAt < b.createdAt)
+
+   const renderComments = () => sortComments().map((comment) =>
+      <Comment
          key={uuid()}
+         taskId={task.id}
          comment={comment}
       />)
 
@@ -44,6 +50,9 @@ const EditTask = ({ task }) => {
          </form>
          <p>Id: {task.id}</p>
          <p>Created at: {moment(task.createdAt).format('DD-MM-YYYY')}</p>
+
+         <AddComment taskId={task.id} />
+
          <ul>
             Comments:
          {renderComments()}
