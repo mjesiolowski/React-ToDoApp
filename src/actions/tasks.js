@@ -1,12 +1,13 @@
 import uuid from 'uuid'
 import moment from 'moment'
 
-export const addTask = (
+export const addTask = ({
    name = "default task",
    active = true,
    createdAt = moment().valueOf(),
    isPriority = false,
    comments = []
+} = {}
 ) => ({
    type: "ADD_TASK",
    task: {
