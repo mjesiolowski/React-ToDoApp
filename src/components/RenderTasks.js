@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Task from './Task'
 
-const TasksList = ({ tasks }) => {
+const RenderTasks = ({ tasks }) => {
    const renderTasks = () => tasks.map(task =>
       <li key={task.id}><Task {...task} /></li>
    )
@@ -19,4 +19,4 @@ const mapStateToProps = (state) => ({
    tasks: state.tasks.filter(({ active }) => active === true)
 })
 
-export default connect(mapStateToProps)(TasksList)
+export default connect(mapStateToProps)(RenderTasks)

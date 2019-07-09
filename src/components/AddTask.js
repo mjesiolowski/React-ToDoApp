@@ -6,16 +6,15 @@ import { validateTask } from '../functions/validateTask'
 import { handleAlerts } from '../functions/handleAlerts'
 
 const AddTask = ({ dispatch, alerts, tasks }) => {
+   const dateFormat = "DD.MM.YYYY"
+
    const [taskName, setTaskName] = useState("")
    const [taskPriority, setTaskPriority] = useState(false)
    const [taskDate, setTaskDate] = useState(moment().format(dateFormat))
 
-   const dateFormat = "DD.MM.YYYY"
-
    const task = {
       taskName,
       taskDate,
-      dateFormat
    }
 
    const handleSubmit = (e, dateFormat) => {
@@ -26,7 +25,7 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
          dueDate: moment(taskDate, dateFormat).valueOf()
       }))
 
-      const isTaskValid = handleAlerts(validateTask(tasks, { ...task }), dispatch)
+      const isTaskValid = handleAlerts(validateTask({ ...task }, tasks, dateFormat), dispatch)
       if (isTaskValid) {
          addTaskAction()
          setTaskName("")
@@ -45,7 +44,6 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
             />
 
             <input
-               placeholder="Set deadline"
                value={taskDate}
                onChange={(e) => setTaskDate(e.target.value)}
             />
@@ -62,7 +60,8 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
             </select>
             {alerts.duplicateAlert && <p>Task already on the to do list</p>}
             {alerts.lengthAlert && <p>Minimum 3 characters required</p>}
-            {alerts.dateAlert && <p>Date fromat: DD.MM.YYYY</p>}
+            {alerts.dateAlert && <p>Your deadline date must not be set in the past. Date fromat: DD.MM.YYYY
+               </p>}
             <button>Add task</button>
          </form>
       </>

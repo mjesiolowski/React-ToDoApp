@@ -15,10 +15,9 @@ store.subscribe(() => {
 })
 
 store.dispatch(addTask())
-store.dispatch(addComment('123', 'komentarz'))
-store.dispatch(addComment('123', 'komentarz2'))
-// store.dispatch(editComment('123', { id: 'qwerty', text: 'update komentarza' }))
-// store.dispatch(deleteComment('123', 'qwerty'))
+
+
+
 
 const jsx = (
   <Provider store={store}>

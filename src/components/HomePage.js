@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation'
-import TasksList from './TasksList'
+import RenderTasks from './RenderTasks'
 import DoneTasksList from './DoneTasksList'
 import AddTask from './AddTask'
 
@@ -8,7 +8,7 @@ const HomePage = () => (
   <div>
     <Navigation />
     <AddTask />
-    <TasksList />
+    <RenderTasks />
     <DoneTasksList />
   </div>
 );

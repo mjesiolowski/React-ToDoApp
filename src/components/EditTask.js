@@ -3,27 +3,57 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import AddComment from './AddComment'
 import RenderComments from './RenderComments'
+import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
 import { editTask } from '../actions/tasks'
+import { validateTask } from '../functions/validateTask'
+import { handleAlerts } from '../functions/handleAlerts'
 
-const EditTask = ({ task, history, dispatch }) => {
+const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
+   const dateFormat = "DD.MM.YYYY"
 
    const [taskName, setTaskName] = useState(task.name)
    const [taskPriority, setTaskPriority] = useState(task.isPriority)
 
-   const dateFormat = "DD.MM.YYYY"
+   const updatedTask = {
+      taskName,
+      taskPriority,
+   }
 
-   const updateTask = () => {
-      dispatch(editTask(task.id, {
-         ...task,
-         name: taskName,
-         isPriority: taskPriority
-      }))
+   const handleReturnButton = () => {
+      history.push('/')
+      dispatch(lengthAlert(false))
+      dispatch(duplicateAlert(false))
+      dispatch(dateAlert(false))
+   }
+
+   const handleSubmit = (e) => {
+      e.preventDefault()
+      handleEditTask()
+   }
+
+   const handleEditTask = () => {
+
+      const editTaskAction = () =>
+         dispatch(editTask(task.id, {
+            ...task,
+            name: taskName,
+            isPriority: taskPriority
+         }))
+
+      const isTaskValid = handleAlerts(validateTask({ ...updatedTask }, tasks), dispatch)
+
+      if (isTaskValid) {
+         editTaskAction()
+         history.push('/')
+      }
+
    }
 
    return (
       <div>
+         <button onClick={handleReturnButton}>Home page</button>
          <h2>{task.name}</h2>
-         <form>
+         <form onSubmit={handleSubmit}>
             <input
                type="text"
                value={taskName}
@@ -41,7 +71,9 @@ const EditTask = ({ task, history, dispatch }) => {
          </form>
          <p>Id: {task.id}</p>
          <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
-         <button onClick={updateTask}>Update task!</button>
+         {alerts.duplicateAlert && <p>Task already on the to do list</p>}
+         {alerts.lengthAlert && <p>Minimum 3 characters required</p>}
+         <button onClick={handleEditTask}>Update task!</button>
 
          <AddComment taskId={task.id} />
 
@@ -55,6 +87,7 @@ const EditTask = ({ task, history, dispatch }) => {
 
 const mapStateToProps = (state, props) => ({
    tasks: state.tasks,
+   alerts: state.alerts,
    task: state.tasks.find(({ id }) => id === props.match.params.id)
 })
 

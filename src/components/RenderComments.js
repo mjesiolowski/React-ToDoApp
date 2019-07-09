@@ -13,7 +13,7 @@ const RenderComments = ({ task }) => {
       />)
 
    return (
-      renderComments()
+      renderComments().length > 0 ? renderComments() : <p>No comments</p>
    )
 }
 
