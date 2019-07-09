@@ -1,33 +1,24 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import moment from 'moment'
-import uuid from 'uuid'
-import Comment from './Comment'
 import AddComment from './AddComment'
+import RenderComments from './RenderComments'
+import { editTask } from '../actions/tasks'
 
-const EditTask = ({ task }) => {
+const EditTask = ({ task, history, dispatch }) => {
 
    const [taskName, setTaskName] = useState(task.name)
    const [taskPriority, setTaskPriority] = useState(task.isPriority)
 
+   const dateFormat = "DD.MM.YYYY"
 
-   // const renderComments = () => task.comments.map((comment) =>
-   //    <li key={comment.id}>
-   //       <label>{comment.text}</label>
-   //       <input type="text" />
-   //       <p>{moment(comment.createdAt).format('DD-MM-YYYY')}</ p>
-   //    </li>
-   // )
-   // console.log(task.comments)
-
-   const sortComments = () => task.comments.sort((a, b) => a.createdAt < b.createdAt)
-
-   const renderComments = () => sortComments().map((comment) =>
-      <Comment
-         key={uuid()}
-         taskId={task.id}
-         comment={comment}
-      />)
+   const updateTask = () => {
+      dispatch(editTask(task.id, {
+         ...task,
+         name: taskName,
+         isPriority: taskPriority
+      }))
+   }
 
    return (
       <div>
@@ -49,19 +40,21 @@ const EditTask = ({ task }) => {
             </select>
          </form>
          <p>Id: {task.id}</p>
-         <p>Created at: {moment(task.createdAt).format('DD-MM-YYYY')}</p>
+         <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
+         <button onClick={updateTask}>Update task!</button>
 
          <AddComment taskId={task.id} />
 
          <ul>
             Comments:
-         {renderComments()}
+            <RenderComments task={task} />
          </ul>
       </div>
    )
 }
 
 const mapStateToProps = (state, props) => ({
+   tasks: state.tasks,
    task: state.tasks.find(({ id }) => id === props.match.params.id)
 })
 

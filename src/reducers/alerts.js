@@ -1,6 +1,7 @@
 const alertsReducerDefaultState = {
    lengthAlert: false,
    duplicateAlert: false,
+   dateAlert: false,
    // editAlert: false,
    // searchAlert: false,
    // isEditionActive: false,
@@ -18,6 +19,12 @@ export const alertsReducer = (state = alertsReducerDefaultState, action) => {
          return {
             ...state,
             duplicateAlert: action.isTrue
+         }
+
+      case 'DATE_ALERT':
+         return {
+            ...state,
+            dateAlert: action.isTrue
          }
       // case 'EDIT_ALERT':
       //    return {

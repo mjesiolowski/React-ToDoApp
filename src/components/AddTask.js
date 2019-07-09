@@ -1,41 +1,53 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { addTask } from '../actions/tasks'
-import { lengthAlert, duplicateAlert } from '../actions/alerts'
+import moment from 'moment'
+import { validateTask } from '../functions/validateTask'
+import { handleAlerts } from '../functions/handleAlerts'
 
 const AddTask = ({ dispatch, alerts, tasks }) => {
    const [taskName, setTaskName] = useState("")
-   const [taskPriority, setTaskPriority] = useState("")
+   const [taskPriority, setTaskPriority] = useState(false)
+   const [taskDate, setTaskDate] = useState(moment().format(dateFormat))
 
-   const validateInput = (taskName, addTask) => {
-      const isDuplicated = tasks.find(task => task.name === taskName.trim())
+   const dateFormat = "DD.MM.YYYY"
 
-      if (taskName.length < 3) { dispatch(lengthAlert(true)) }
-      else if (isDuplicated) { dispatch(duplicateAlert(true)) }
-      else {
-         addTask()
-         dispatch(lengthAlert(false))
-         dispatch(duplicateAlert(false))
-         setTaskName("")
-      }
+   const task = {
+      taskName,
+      taskDate,
+      dateFormat
    }
 
-   const handleSubmit = (e) => {
+   const handleSubmit = (e, dateFormat) => {
       e.preventDefault()
-      const action = () => dispatch(addTask({ name: taskName, isPriority: taskPriority }))
+      const addTaskAction = () => dispatch(addTask({
+         name: taskName,
+         isPriority: taskPriority,
+         dueDate: moment(taskDate, dateFormat).valueOf()
+      }))
 
-      validateInput(taskName, action)
+      const isTaskValid = handleAlerts(validateTask(tasks, { ...task }), dispatch)
+      if (isTaskValid) {
+         addTaskAction()
+         setTaskName("")
+      }
    }
 
    return (
       <>
          <h2>AddTask</h2>
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={(e) => handleSubmit(e, dateFormat)}>
             <input
                type="text"
                placeholder="Add task"
                value={taskName}
                onChange={(e) => setTaskName(e.target.value)}
+            />
+
+            <input
+               placeholder="Set deadline"
+               value={taskDate}
+               onChange={(e) => setTaskDate(e.target.value)}
             />
 
             <label htmlFor="priority">Priority:</label>
@@ -44,11 +56,13 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
                value={taskPriority}
                onChange={(e) => setTaskPriority(e.target.value)}
             >
-               <option value="true">Important</option>
                <option value="false">Not important</option>
+               <option value="true">Important</option>
+
             </select>
             {alerts.duplicateAlert && <p>Task already on the to do list</p>}
             {alerts.lengthAlert && <p>Minimum 3 characters required</p>}
+            {alerts.dateAlert && <p>Date fromat: DD.MM.YYYY</p>}
             <button>Add task</button>
          </form>
       </>

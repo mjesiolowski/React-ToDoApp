@@ -8,6 +8,11 @@ export const duplicateAlert = isTrue => ({
    isTrue
 })
 
+export const dateAlert = isTrue => ({
+   type: 'DATE_ALERT',
+   isTrue
+})
+
 // export const editAlert = isTrue => ({
 //    type: 'EDIT_ALERT',
 //    isTrue
