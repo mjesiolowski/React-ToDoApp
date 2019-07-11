@@ -14,11 +14,16 @@ const tasksReducerDefaultState = [{
 {
    id: uuid(),
    name: "Task 2",
-   active: true,
+   active: false,
    createdAt: moment().subtract(3, 'days').valueOf(),
    deadline: moment().add(4, 'days').valueOf(),
    isPriority: false,
-   comments: []
+   comments: [{
+      beingEdited: false,
+      createdAt: 1562845281035,
+      id: "f612c3a5-4ae8-4c86-9a2b-513e2a0fed99",
+      text: "dada"
+   }]
 },
 {
    id: uuid(),

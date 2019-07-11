@@ -5,6 +5,7 @@ import NotFoundPage from '../components/NotFoundPage';
 import Header from '../components/Header';
 // import AddTask from '../components/AddTask';
 import EditTask from '../components/EditTask';
+import DoneTask from '../components/DoneTask';
 
 
 const AppRouter = () => (
@@ -13,7 +14,7 @@ const AppRouter = () => (
     <Switch>
       <Route path="/" component={HomePage} exact={true} />
       <Route path="/edit/:id" component={EditTask} />
-      {/* <Route path="/add" component={AddTask} /> */}
+      <Route path="/done/:id" component={DoneTask} />
       <Route component={NotFoundPage} />
     </Switch>
   </BrowserRouter>

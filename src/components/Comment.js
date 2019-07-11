@@ -3,19 +3,17 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import { editComment } from '../actions/tasks'
 
-const Comment = ({ comment, dispatch, taskId }) => {
-
-   // console.log(comment)
+const Comment = ({ comment, dispatch, id, active }) => {
 
    const [commentText, setCommentText] = useState(comment.text)
 
    const handleClick = () => {
-      dispatch(editComment(taskId, { ...comment, beingEdited: true, }))
+      dispatch(editComment(id, { ...comment, beingEdited: true, }))
    }
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      dispatch(editComment(taskId,
+      dispatch(editComment(id,
          {
             ...comment,
             beingEdited: false,
@@ -38,11 +36,7 @@ const Comment = ({ comment, dispatch, taskId }) => {
 
             <>
                <p>{commentText}</p>
-               <button
-                  onClick={handleClick}
-               >
-                  Edit comment
-                  </button>
+               {active && <button onClick={handleClick}> Edit comment </button>}
             </>}
 
          <p>{moment(comment.createdAt).format('DD-MM-YYYY')}</ p>

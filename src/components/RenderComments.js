@@ -8,7 +8,7 @@ const RenderComments = ({ task }) => {
    const renderComments = () => sortComments().map((comment) =>
       <Comment
          key={uuid()}
-         taskId={task.id}
+         {...task}
          comment={comment}
       />)
 
