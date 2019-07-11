@@ -5,8 +5,8 @@ const tasksReducerDefaultState = [{
    id: '123',
    name: "Task 1",
    active: true,
-   createdAt: moment().valueOf(),
-   dueDate: moment().valueOf(),
+   createdAt: moment().subtract(1, 'day').valueOf(),
+   dueDate: moment().add(2, 'days').valueOf(),
    isPriority: false,
    comments: []
 
@@ -15,17 +15,17 @@ const tasksReducerDefaultState = [{
    id: uuid(),
    name: "Task 2",
    active: true,
-   createdAt: moment().valueOf(),
-   dueDate: moment().valueOf(),
+   createdAt: moment().subtract(3, 'days').valueOf(),
+   dueDate: moment().add(4, 'days').valueOf(),
    isPriority: false,
    comments: []
 },
 {
    id: uuid(),
    name: "Task 3",
-   active: false,
-   createdAt: moment().valueOf(),
-   dueDate: moment().valueOf(),
+   active: true,
+   createdAt: moment().subtract(2, 'days').valueOf(),
+   dueDate: moment().add(1, 'day').valueOf(),
    isPriority: false,
    comments: []
 },

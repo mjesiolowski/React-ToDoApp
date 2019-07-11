@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from 'redux'
 import { tasksReducer } from '../reducers/tasks'
 import { alertsReducer } from '../reducers/alerts'
+import { filtersReducer } from '../reducers/filters'
 // import { alertReducer } from '../reducers/alertReducer'
 // import { addInputReducer } from './addInputReducer';
 // import { editInputReducer } from './editInputReducer';
@@ -10,7 +11,7 @@ const store = createStore(
    combineReducers({
       tasks: tasksReducer,
       alerts: alertsReducer,
-      // searchedTasks: searchReducer,
+      filters: filtersReducer
       // addInput: addInputReducer,
       // editInput: editInputReducer,
    }))

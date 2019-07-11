@@ -59,7 +59,7 @@ module.exports = (env) => {
             "process.env.FIREBASE_APP_ID": JSON.stringify(process.env.FIREBASE_APP_ID)
          })
       ],
-      devtool: isProduction ? 'source-map' : 'cheap-source-map',
+      devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
       devServer: {
          contentBase: path.join(__dirname, 'public'),
          historyApiFallback: true,
