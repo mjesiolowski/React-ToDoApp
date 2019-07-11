@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import { setTextFilter, setSortBy } from '../actions/filters'
 
 const Navigation = ({ dispatch }) => {
    const [filteredText, handleFilteredText] = useState("")
-   const [sortBy, handleSortBy] = useState('name')
+   const [sortBy, handleSortBy] = useState('createdAt')
 
-   const dispatchFilteredText = (e) => {
-      handleFilteredText(e.target.value)
-      dispatch(setTextFilter(e.target.value))
+   useEffect(() => {
+      dispatchFilteredText("")
+   }, [])
+
+   const dispatchFilteredText = (value) => {
+      handleFilteredText(value)
+      dispatch(setTextFilter(value))
    }
 
    const dispatchSortBy = (e) => {
@@ -20,7 +24,7 @@ const Navigation = ({ dispatch }) => {
       <div>
          <input
             value={filteredText}
-            onChange={(e) => dispatchFilteredText(e)}
+            onChange={(e) => dispatchFilteredText(e.target.value)}
             placeholder="Search task" />
 
          <label htmlFor='sortTasks'>Sort tasks by:</label>
@@ -30,8 +34,8 @@ const Navigation = ({ dispatch }) => {
             value={sortBy}
             onChange={(e) => dispatchSortBy(e)}
          >
-            <option value="name">Name</option>
             <option value="createdAt">Created at</option>
+            <option value="name">Name</option>
             <option value="deadline">Deadline</option>
          </select>
 

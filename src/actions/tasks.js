@@ -5,7 +5,7 @@ export const addTask = ({
    name = "default task",
    active = true,
    createdAt = moment().valueOf(),
-   dueDate = undefined,
+   deadline = undefined,
    isPriority = false,
    comments = []
 } = {}
@@ -16,7 +16,7 @@ export const addTask = ({
       name: name.trim(),
       active,
       createdAt,
-      dueDate,
+      deadline,
       isPriority,
       comments
    }

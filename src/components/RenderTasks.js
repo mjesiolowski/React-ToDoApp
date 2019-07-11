@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Task from './Task'
+import { getFilteredTasks } from '../functions/getFilteredTasks'
 
 const RenderTasks = ({ tasks }) => {
    const renderTasks = () => tasks.map(task =>
@@ -16,7 +17,7 @@ const RenderTasks = ({ tasks }) => {
 }
 
 const mapStateToProps = (state) => ({
-   tasks: state.tasks.filter(({ active }) => active === true)
+   tasks: getFilteredTasks(state.tasks, state.filters)
 })
 
 export default connect(mapStateToProps)(RenderTasks)

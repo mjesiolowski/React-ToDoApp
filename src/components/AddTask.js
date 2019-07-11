@@ -22,7 +22,7 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
       const addTaskAction = () => dispatch(addTask({
          name: taskName,
          isPriority: taskPriority,
-         dueDate: moment(taskDate, dateFormat).valueOf()
+         deadline: moment(taskDate, dateFormat).valueOf()
       }))
 
       const isTaskValid = handleAlerts(validateTask({ ...task }, tasks, dateFormat), dispatch)

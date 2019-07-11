@@ -1,5 +1,5 @@
 const filtersReducerDefaultState = {
-   sortBy: 'name',
+   sortBy: 'createdAt',
    filteredText: '',
 }
 

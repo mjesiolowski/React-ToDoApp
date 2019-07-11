@@ -3,7 +3,7 @@ import Comment from './Comment'
 import uuid from 'uuid'
 
 const RenderComments = ({ task }) => {
-   const sortComments = () => task.comments.sort((a, b) => a.createdAt < b.createdAt)
+   const sortComments = () => task.comments.sort((a, b) => a.createdAt < b.createdAt ? 1 : -1)
 
    const renderComments = () => sortComments().map((comment) =>
       <Comment
