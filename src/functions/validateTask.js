@@ -1,13 +1,9 @@
 import moment from 'moment'
 
-export const validateTask = ({ taskName, taskDate },tasks, dateFormat) => {
+export const validateTask = ({ taskId, taskName, taskDeadline, dateFormat }, tasks) => {
    const isTooShort = taskName.length < 3
-   const isDuplicated = tasks.find(task => task.name === taskName.trim())
-   // const isDateInvalid = dateFormat ? !moment(taskDate, dateFormat, true).isValid() : false
-
-
-
-   const isDateInvalid = moment(taskDate, dateFormat).isValid() ? moment().isAfter(moment(taskDate, dateFormat), 'day') : true
+   const isDuplicated = tasks.find(task => task.name.toLowerCase() === taskName.trim().toLowerCase() && task.id !== taskId)
+   const isDateInvalid = moment(taskDeadline, dateFormat).isValid() ? moment().isAfter(moment(taskDeadline, dateFormat), 'day') : true
 
    if (isTooShort) return 'lengthAlert'
    else if (isDuplicated) return 'duplicateAlert'

@@ -4,7 +4,7 @@ import moment from 'moment'
 import AddComment from './AddComment'
 import RenderComments from './RenderComments'
 import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
-import { editTask } from '../actions/tasks'
+import { editTask, removeTask } from '../actions/tasks'
 import { validateTask } from '../functions/validateTask'
 import { handleAlerts } from '../functions/handleAlerts'
 
@@ -13,10 +13,13 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
 
    const [taskName, setTaskName] = useState(task.name)
    const [taskPriority, setTaskPriority] = useState(task.isPriority)
+   const [taskDeadline, setTaskDeadline] = useState(moment(task.deadline).format(dateFormat))
 
    const updatedTask = {
+      taskId: task.id,
       taskName,
-      taskPriority,
+      taskDeadline,
+      dateFormat
    }
 
    const handleReturnButton = () => {
@@ -26,18 +29,24 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
       dispatch(dateAlert(false))
    }
 
+   const handleRemoveTask = () => {
+      dispatch(removeTask(task.id))
+      history.push('/')
+   }
+
    const handleSubmit = (e) => {
       e.preventDefault()
       handleEditTask()
    }
 
-   const handleEditTask = () => {
+   const handleUpdateTask = () => {
 
       const editTaskAction = () =>
          dispatch(editTask(task.id, {
             ...task,
             name: taskName,
-            isPriority: taskPriority
+            isPriority: taskPriority,
+            deadline: moment(taskDeadline, dateFormat).valueOf()
          }))
 
       const isTaskValid = handleAlerts(validateTask({ ...updatedTask }, tasks), dispatch)
@@ -46,7 +55,6 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
          editTaskAction()
          history.push('/')
       }
-
    }
 
    return (
@@ -69,11 +77,21 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
                <option value="false">Not important</option>
             </select>
          </form>
-         <p>Id: {task.id}</p>
          <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
+         <label htmlFor="deadline">Deadline: </label>
+         <input
+            id="deadline"
+            value={taskDeadline}
+            onChange={(e) => setTaskDeadline(e.target.value)}
+         />
+
          {alerts.duplicateAlert && <p>Task already on the to do list</p>}
          {alerts.lengthAlert && <p>Minimum 3 characters required</p>}
-         <button onClick={handleEditTask}>Update task!</button>
+         {alerts.dateAlert && <p>Your deadline date must not be set in the past. Date fromat: DD.MM.YYYY
+               </p>}
+
+         <button onClick={handleRemoveTask}>Remove task!</button>
+         <button onClick={handleUpdateTask}>Update task!</button>
 
          <AddComment taskId={task.id} />
 

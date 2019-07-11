@@ -37,6 +37,7 @@ const Navigation = ({ dispatch }) => {
             <option value="createdAt">Created at</option>
             <option value="name">Name</option>
             <option value="deadline">Deadline</option>
+            <option value="priority">Priority</option>
          </select>
 
       </div>

@@ -10,22 +10,23 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
 
    const [taskName, setTaskName] = useState("")
    const [taskPriority, setTaskPriority] = useState(false)
-   const [taskDate, setTaskDate] = useState(moment().format(dateFormat))
+   const [taskDeadline, setTaskDeadline] = useState(moment().format(dateFormat))
 
    const task = {
       taskName,
-      taskDate,
+      taskDeadline,
+      dateFormat
    }
 
-   const handleSubmit = (e, dateFormat) => {
+   const handleAddTask = (e, dateFormat) => {
       e.preventDefault()
       const addTaskAction = () => dispatch(addTask({
          name: taskName,
          isPriority: taskPriority,
-         deadline: moment(taskDate, dateFormat).valueOf()
+         deadline: moment(taskDeadline, dateFormat).valueOf()
       }))
 
-      const isTaskValid = handleAlerts(validateTask({ ...task }, tasks, dateFormat), dispatch)
+      const isTaskValid = handleAlerts(validateTask({ ...task }, tasks), dispatch)
       if (isTaskValid) {
          addTaskAction()
          setTaskName("")
@@ -35,7 +36,7 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
    return (
       <>
          <h2>AddTask</h2>
-         <form onSubmit={(e) => handleSubmit(e, dateFormat)}>
+         <form onSubmit={(e) => handleAddTask(e, dateFormat)}>
             <input
                type="text"
                placeholder="Add task"
@@ -44,8 +45,8 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
             />
 
             <input
-               value={taskDate}
-               onChange={(e) => setTaskDate(e.target.value)}
+               value={taskDeadline}
+               onChange={(e) => setTaskDeadline(e.target.value)}
             />
 
             <label htmlFor="priority">Priority:</label>

@@ -11,6 +11,8 @@ export const getFilteredTasks = (tasks, { filteredText, sortBy }) => {
                return a.deadline > b.deadline ? 1 : -1
             case 'name':
                return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+            case 'priority':
+               return a.isPriority > b.isPriority ? -1 : 1
          }
       })
    console.log(filteredTasks)
