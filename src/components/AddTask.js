@@ -34,7 +34,7 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
    }
 
    return (
-      <>
+      <section className="addTask">
          <h2>AddTask</h2>
          <form onSubmit={(e) => handleAddTask(e, dateFormat)}>
             <input
@@ -65,7 +65,7 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
                </p>}
             <button>Add task</button>
          </form>
-      </>
+      </section>
    )
 }
 

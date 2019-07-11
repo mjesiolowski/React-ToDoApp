@@ -5,12 +5,12 @@ import RenderDoneTasks from './RenderDoneTasks'
 import AddTask from './AddTask'
 
 const HomePage = () => (
-  <div>
+  <main>
     <Navigation />
     <AddTask />
     <RenderTasks />
     <RenderDoneTasks />
-  </div>
+  </main>
 );
 
 export default HomePage;

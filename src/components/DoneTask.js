@@ -13,16 +13,22 @@ const DoneTask = ({ task, history }) => {
 
 
    return (
-      <div>
+      <section className="doneTask">
          <button onClick={handleReturnButton}>Home page</button>
-         <h2>{task.name}</h2>
-         <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
+         <div className="taskDetails">
+            <h1>{task.name}</h1>
+            <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
 
-         <ul>
-            Comments:
+         </div>
+
+         <div className="comments">
+            <ul>
+               Comments:
             <RenderComments task={task} />
-         </ul>
-      </div>
+            </ul>
+         </div>
+
+      </section>
    )
 }
 

@@ -9,10 +9,12 @@ const RenderDoneTasks = ({ tasks }) => {
    )
 
    return (
-      <ul>
-         <h2>DoneTasks:</h2>
-         {renderTasks()}
-      </ul>
+      <div className="doneTasks">
+         <ul>
+            <h2>DoneTasks:</h2>
+            {renderTasks()}
+         </ul>
+      </div>
    )
 }
 

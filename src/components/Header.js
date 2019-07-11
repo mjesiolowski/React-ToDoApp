@@ -5,9 +5,9 @@ import HomePage from './HomePage'
 const Header = () => {
 
    return (
-      <>
+      <header>
          <NavLink to="/"><h1>ToDoList App</h1></NavLink>
-      </>
+      </header>
    )
 }
 

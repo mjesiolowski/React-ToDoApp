@@ -21,7 +21,7 @@ const Navigation = ({ dispatch }) => {
    }
 
    return (
-      <div>
+      <section className="navigation">
          <input
             value={filteredText}
             onChange={(e) => dispatchFilteredText(e.target.value)}
@@ -40,7 +40,7 @@ const Navigation = ({ dispatch }) => {
             <option value="priority">Priority</option>
          </select>
 
-      </div>
+      </section >
    )
 }
 

@@ -58,48 +58,58 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
    }
 
    return (
-      <div>
+      <section className="task">
          <button onClick={handleReturnButton}>Home page</button>
-         <h2>{task.name}</h2>
-         <form onSubmit={handleSubmit}>
+         <div className="taskDetails">
+            <h1>{task.name}</h1>
+            <form onSubmit={handleSubmit}>
+               <input
+                  type="text"
+                  value={taskName}
+                  onChange={(e) => setTaskName(e.target.value)} />
+
+               <label htmlFor="priority">Priority:</label>
+               <select
+                  id="priority"
+                  value={taskPriority}
+                  onChange={(e) => setTaskPriority(e.target.value)}
+               >
+                  <option value="true">Important</option>
+                  <option value="false">Not important</option>
+               </select>
+            </form>
+            <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
+            <label htmlFor="deadline">Deadline: </label>
             <input
-               type="text"
-               value={taskName}
-               onChange={(e) => setTaskName(e.target.value)} />
+               id="deadline"
+               value={taskDeadline}
+               onChange={(e) => setTaskDeadline(e.target.value)}
+            />
+         </div>
 
-            <label htmlFor="priority">Priority:</label>
-            <select
-               id="priority"
-               value={taskPriority}
-               onChange={(e) => setTaskPriority(e.target.value)}
-            >
-               <option value="true">Important</option>
-               <option value="false">Not important</option>
-            </select>
-         </form>
-         <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
-         <label htmlFor="deadline">Deadline: </label>
-         <input
-            id="deadline"
-            value={taskDeadline}
-            onChange={(e) => setTaskDeadline(e.target.value)}
-         />
-
-         {alerts.duplicateAlert && <p>Task already on the to do list</p>}
-         {alerts.lengthAlert && <p>Minimum 3 characters required</p>}
-         {alerts.dateAlert && <p>Your deadline date must not be set in the past. Date fromat: DD.MM.YYYY
+         <div className="alerts">
+            {alerts.duplicateAlert && <p>Task already on the to do list</p>}
+            {alerts.lengthAlert && <p>Minimum 3 characters required</p>}
+            {alerts.dateAlert && <p>Your deadline date must not be set in the past. Date fromat: DD.MM.YYYY
                </p>}
+         </div>
 
-         <button onClick={handleRemoveTask}>Remove task!</button>
-         <button onClick={handleUpdateTask}>Update task!</button>
+         <div className="taskActions">
+            <button onClick={handleRemoveTask}>Remove task!</button>
+            <button onClick={handleUpdateTask}>Update task!</button>
+         </div>
 
-         <AddComment taskId={task.id} />
+         <div className="comments">
+            <AddComment taskId={task.id} />
 
-         <ul>
-            Comments:
-            <RenderComments task={task} />
-         </ul>
-      </div>
+            <ul>
+               Comments:
+   <RenderComments task={task} />
+            </ul>
+         </div>
+
+
+      </section>
    )
 }
 
