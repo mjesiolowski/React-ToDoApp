@@ -18,7 +18,7 @@ const DoneTask = ({ task, history }) => {
          <div className="taskDetails">
             <h1>{task.name}</h1>
             <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
-
+            <p>Completed at: {moment(task.completedAt).format(dateFormat)}</p>
          </div>
 
          <div className="comments">

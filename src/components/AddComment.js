@@ -1,28 +1,42 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addComment } from '../actions/tasks'
+import { commentAlert as commentAlertAction } from '../actions/alerts'
 
-const AddComment = ({ dispatch, taskId }) => {
+const AddComment = ({ dispatch, taskId, commentAlert }) => {
 
-   const [inputValue, setInputValue] = useState("")
+   const [commentValue, setCommentValue] = useState("")
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      dispatch(addComment(taskId, inputValue))
-      setInputValue("")
+      if (commentValue.length > 0) {
+         dispatch(addComment(taskId, commentValue))
+         dispatch(commentAlertAction(false))
+         setCommentValue("")
+      }
+      else {
+         dispatch(commentAlertAction(true))
+      }
    }
 
    return (
       <form onSubmit={handleSubmit}>
          <input
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            value={commentValue}
+            onChange={(e) => setCommentValue(e.target.value)}
             type="text" />
          <button>Add comment</button>
+         {commentAlert && <p>Minimum length of 1 character required</p>}
       </form>
 
    )
 }
 
+const mapStateToProps = ({ alerts }) => {
+   return {
+      commentAlert: alerts.commentAlert
+   }
+}
 
-export default connect()(AddComment)
+
+export default connect(mapStateToProps)(AddComment)

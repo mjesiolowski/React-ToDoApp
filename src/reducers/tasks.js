@@ -4,7 +4,8 @@ import moment from 'moment'
 const tasksReducerDefaultState = [{
    id: '123',
    name: "Task 1",
-   active: true,
+   completed: false,
+   completedAt: null,
    createdAt: moment().subtract(1, 'day').valueOf(),
    deadline: moment().add(2, 'days').valueOf(),
    isPriority: false,
@@ -14,7 +15,8 @@ const tasksReducerDefaultState = [{
 {
    id: uuid(),
    name: "Task 2",
-   active: false,
+   completed: false,
+   completedAt: null,
    createdAt: moment().subtract(3, 'days').valueOf(),
    deadline: moment().add(4, 'days').valueOf(),
    isPriority: false,
@@ -22,13 +24,14 @@ const tasksReducerDefaultState = [{
       beingEdited: false,
       createdAt: 1562845281035,
       id: "f612c3a5-4ae8-4c86-9a2b-513e2a0fed99",
-      text: "dada"
+      text: "test comment"
    }]
 },
 {
    id: uuid(),
    name: "Task 3",
-   active: true,
+   completed: false,
+   completedAt: null,
    createdAt: moment().subtract(2, 'days').valueOf(),
    deadline: moment().add(1, 'day').valueOf(),
    isPriority: false,
@@ -60,8 +63,8 @@ export const tasksReducer = (state = tasksReducerDefaultState, action) => {
             if (task.id === action.id) {
                return {
                   ...task,
-                  ...task.active = false,
-                  ...task.time = new Date().getTime()
+                  ...task.completed = true,
+                  ...task.completedAt = moment().valueOf()
                }
             } else {
                return task

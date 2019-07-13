@@ -13,17 +13,7 @@ export const dateAlert = isTrue => ({
    isTrue
 })
 
-// export const editAlert = isTrue => ({
-//    type: 'EDIT_ALERT',
-//    isTrue
-// })
-
-// export const editionActive = isTrue => ({
-//    type: 'EDITION_ACTIVE',
-//    isTrue
-// })
-
-// export const searchAlert = isTrue => ({
-//    type: 'SEARCH_ALERT',
-//    isTrue
-// })
+export const commentAlert = isTrue => ({
+   type: 'COMMENT_ALERT',
+   isTrue
+})

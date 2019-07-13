@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import { setTextFilter, setSortBy } from '../actions/filters'
+import { setTextFilter as setTextFilterAction, setSortBy as setSortByAction } from '../actions/filters'
 
 const Navigation = ({ dispatch }) => {
-   const [filteredText, handleFilteredText] = useState("")
-   const [sortBy, handleSortBy] = useState('createdAt')
+   const [filteredText, setFilteredText] = useState("")
+   const [sortBy, setSortBy] = useState('createdAt')
 
    useEffect(() => {
       dispatchFilteredText("")
    }, [])
 
    const dispatchFilteredText = (value) => {
-      handleFilteredText(value)
-      dispatch(setTextFilter(value))
+      setFilteredText(value)
+      dispatch(setTextFilterAction(value.trim()))
    }
 
    const dispatchSortBy = (e) => {
-      handleSortBy(e.target.value)
-      dispatch(setSortBy(e.target.value))
+      setSortBy(e.target.value)
+      dispatch(setSortByAction(e.target.value))
    }
 
    return (

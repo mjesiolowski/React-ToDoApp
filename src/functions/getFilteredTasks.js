@@ -1,7 +1,7 @@
 export const getFilteredTasks = (tasks, { filteredText, sortBy }) => {
 
    const filteredTasks = tasks
-      .filter((task) => task.name.toLowerCase().includes(filteredText.toLowerCase()) && task.active)
+      .filter((task) => task.name.toLowerCase().includes(filteredText.toLowerCase()) && !task.completed)
       .sort((a, b) => {
 
          switch (sortBy) {
@@ -15,6 +15,6 @@ export const getFilteredTasks = (tasks, { filteredText, sortBy }) => {
                return a.isPriority > b.isPriority ? -1 : 1
          }
       })
-   console.log(filteredTasks)
+   console.log('Filtered: ', filteredTasks)
    return filteredTasks
 }

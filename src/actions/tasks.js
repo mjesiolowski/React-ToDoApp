@@ -3,9 +3,10 @@ import moment from 'moment'
 
 export const addTask = ({
    name = "default task",
-   active = true,
+   completed = false,
+   completedAt = null,
    createdAt = moment().valueOf(),
-   deadline = undefined,
+   deadline = null,
    isPriority = 'false',
    comments = []
 } = {}
@@ -14,9 +15,10 @@ export const addTask = ({
    task: {
       id: uuid(),
       name: name.trim(),
-      active,
       createdAt,
       deadline,
+      completed,
+      completedAt,
       isPriority,
       comments
    }
