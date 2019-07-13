@@ -1,7 +1,7 @@
 import uuid from 'uuid'
 import moment from 'moment'
 
-const tasksReducerDefaultState = [{
+const defaultTasks = [{
    id: '123',
    name: "Task 1",
    completed: false,
@@ -10,7 +10,6 @@ const tasksReducerDefaultState = [{
    deadline: moment().add(2, 'days').valueOf(),
    isPriority: false,
    comments: []
-
 },
 {
    id: uuid(),
@@ -39,7 +38,19 @@ const tasksReducerDefaultState = [{
 },
 ]
 
-export const tasksReducer = (state = tasksReducerDefaultState, action) => {
+const tasksReducerDefaultState = () => {
+   try {
+      const tasksJSON = localStorage.getItem('tasks')
+      if (tasksJSON === null) {
+         return defaultTasks
+      }
+
+      return JSON.parse(tasksJSON)
+   } catch (e) { }
+}
+
+
+export const tasksReducer = (state = tasksReducerDefaultState(), action) => {
    switch (action.type) {
       case 'ADD_TASK':
          return [

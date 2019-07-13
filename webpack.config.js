@@ -46,7 +46,7 @@ module.exports = (env) => {
             filename: "styles.css",
          }),
       ],
-      devtool: isProduction ? 'source-map' : 'inline-cheap-source-map',
+      devtool: isProduction ? 'source-map' : 'inline-source-map',
       devServer: {
          contentBase: path.join(__dirname, 'public'),
          historyApiFallback: true,

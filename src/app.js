@@ -8,10 +8,15 @@ import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
+
+
+
 const store = configureStore()
 
+
 store.subscribe(() => {
-  console.log(store.getState())
+  const tasksJSON = JSON.stringify(store.getState().tasks)
+  localStorage.setItem('tasks', tasksJSON)
 })
 
 const jsx = (
