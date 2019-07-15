@@ -21,24 +21,33 @@ const Navigation = ({ dispatch }) => {
    }
 
    return (
-      <section className="navigation">
+      <section className="navigation form">
          <input
             value={filteredText}
             onChange={(e) => dispatchFilteredText(e.target.value)}
-            placeholder="Search task" />
+            placeholder="Search task"
+            className="form__input"
+         />
 
-         <label htmlFor='sortTasks'>Sort tasks by:</label>
+         <div className="form__wrapper">
+            <label
+               htmlFor='sortTasks'
+               className='form__label'
+            >Sort by:</label>
 
-         <select
-            id='sortTasks'
-            value={sortBy}
-            onChange={(e) => dispatchSortBy(e)}
-         >
-            <option value="createdAt">Created at</option>
-            <option value="name">Name</option>
-            <option value="deadline">Deadline</option>
-            <option value="priority">Priority</option>
-         </select>
+            <select
+               id='sortTasks'
+               value={sortBy}
+               onChange={(e) => dispatchSortBy(e)}
+               className="form__select"
+            >
+               <option value="createdAt">Created at</option>
+               <option value="name">Name</option>
+               <option value="deadline">Deadline</option>
+               <option value="priority">Priority</option>
+            </select>
+         </div>
+
 
       </section >
    )

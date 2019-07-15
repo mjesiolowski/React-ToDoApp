@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #aaa;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background-color: lighten($dark, 10%);
+  // min-height: 100vh;
+  word-break: break-all;
+}

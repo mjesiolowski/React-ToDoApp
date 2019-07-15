@@ -5,15 +5,15 @@ import DoneTaskItem from './DoneTaskItem'
 const RenderDoneTasks = ({ tasks }) => {
 
    const renderTasks = () => tasks.map(task =>
-      <li key={task.id}><DoneTaskItem {...task} /></li>)
+      <li className="tasks__item tasks__item--done" key={task.id}><DoneTaskItem {...task} /></li>)
 
    return (
-      <div className="doneTasks">
-         <ul>
-            <h2>Completed tasks (last 5):</h2>
+      <section className="doneTasks tasks">
+         <ul className="list">
+            <h2 className="title__sub">Completed (last 5):</h2>
             {renderTasks()}
          </ul>
-      </div>
+      </section>
    )
 }
 

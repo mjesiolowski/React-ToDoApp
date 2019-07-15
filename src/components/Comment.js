@@ -22,13 +22,14 @@ const Comment = ({ comment, dispatch, id, active }) => {
    }
 
    return (
-      <li>
+      <>
          {comment.beingEdited ?
             <form onSubmit={handleSubmit}>
                <input
                   type="text"
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
+                  className="form__input"
                />
             </form>
 
@@ -36,11 +37,15 @@ const Comment = ({ comment, dispatch, id, active }) => {
 
             <>
                <p>{commentText}</p>
-               {active && <button onClick={handleClick}> Edit comment </button>}
+               {active && <button
+                  onClick={handleClick}
+                  className="task__button button"
+               >
+                  Edit comment </button>}
             </>}
 
          <p>{moment(comment.createdAt).format('DD-MM-YYYY')}</ p>
-      </li>
+      </>
 
    )
 }

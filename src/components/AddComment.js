@@ -20,12 +20,19 @@ const AddComment = ({ dispatch, taskId, commentAlert }) => {
    }
 
    return (
-      <form onSubmit={handleSubmit}>
+      <form
+         onSubmit={handleSubmit}
+         className="form"
+      >
          <input
             value={commentValue}
             onChange={(e) => setCommentValue(e.target.value)}
-            type="text" />
-         <button>Add comment</button>
+            type="text"
+            placeholder="Add comment"
+            className="form__input" />
+
+         <button className="task__button button">Add comment</button>
+
          {commentAlert && <p>Minimum length of 1 character required</p>}
       </form>
 

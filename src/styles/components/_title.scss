@@ -1,0 +1,13 @@
+.title {
+   color: $white;
+   font-size: $font-size-xl;
+   margin: 0;
+   padding: $m-size;
+   text-decoration: none;
+}
+
+.title__sub {
+   @extend .title;
+   font-size: $font-size-l;
+   text-align: center;
+}

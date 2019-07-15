@@ -13,7 +13,7 @@ const DoneTask = ({ task, history }) => {
 
 
    return (
-      <section className="doneTask">
+      <section>
          <button onClick={handleReturnButton}>Home page</button>
          <div className="taskDetails">
             <h1>{task.name}</h1>

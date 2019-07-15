@@ -1,0 +1,19 @@
+.addTask {
+   border-bottom: 1px solid $blue;
+   padding: $xs-size;
+}
+
+.addTask__title {
+   display: none;
+}
+
+.addTask__alert {
+   flex-basis: 100%;
+   margin: 0 $xs-size $xs-size $xs-size;
+   text-align: center;
+}
+
+.addTask__button {
+   // color: $white;
+   flex-basis: 100%;
+}

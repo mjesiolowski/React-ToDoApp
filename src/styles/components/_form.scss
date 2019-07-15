@@ -1,0 +1,33 @@
+.form {
+   @include flexbox(center, center);
+}
+
+.form__input {
+   border: none;
+   color: grey;
+   flex-basis: 100%;
+   font-size: $font-size-s;
+   height: 3rem;
+   margin: 0 $s-size $s-size $s-size;
+   padding: $s-size 0;
+   text-align: center;
+}
+
+.form__label {
+   color: $white;
+   font-size: $font-size-s;
+   font-weight: bold;
+}
+
+.form__select {
+   color: grey;
+   font-size: $font-size-s;
+   height: 3rem;
+   margin: 0 $s-size;
+   text-align: center;
+}
+
+.form__wrapper {
+   @include flexbox(center, center);
+   margin: 0 $s-size $s-size $s-size;
+}

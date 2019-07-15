@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import AddComment from './AddComment'
 import RenderComments from './RenderComments'
-import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
 import { editTask, removeTask } from '../actions/tasks'
 import { validateTask } from '../functions/validateTask'
 import { handleAlerts } from '../functions/handleAlerts'
@@ -22,12 +21,7 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
       dateFormat
    }
 
-   const handleReturnButton = () => {
-      history.push('/')
-      dispatch(lengthAlert(false))
-      dispatch(duplicateAlert(false))
-      dispatch(dateAlert(false))
-   }
+
 
    const handleRemoveTask = () => {
       dispatch(removeTask(task.id))
@@ -59,52 +53,83 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
 
    return (
       <section className="task">
-         <button onClick={handleReturnButton}>Home page</button>
-         <div className="taskDetails">
-            <h1>{task.name}</h1>
-            <form onSubmit={handleSubmit}>
+         <div className="container">
+            <h1 className="title__sub">{task.name}</h1>
+            <p className="task__text text">Created at: {moment(task.createdAt).format(dateFormat)}</p>
+            <form
+               onSubmit={handleSubmit}
+               className="form"
+            >
                <input
                   type="text"
                   value={taskName}
-                  onChange={(e) => setTaskName(e.target.value)} />
+                  onChange={(e) => setTaskName(e.target.value)}
+                  className="form__input"
+               />
 
-               <label htmlFor="priority">Priority:</label>
-               <select
-                  id="priority"
-                  value={taskPriority}
-                  onChange={(e) => setTaskPriority(e.target.value)}
-               >
-                  <option value="true">Important</option>
-                  <option value="false">Not important</option>
-               </select>
+               <div className="form__wrapper">
+                  <label
+                     htmlFor="priority"
+                     className='form__label'
+                  >Priority:</label>
+
+                  <select
+                     id="priority"
+                     value={taskPriority}
+                     onChange={(e) => setTaskPriority(e.target.value)}
+                     className='form__select'
+                  >
+                     <option value="true">Important</option>
+                     <option value="false">Not important</option>
+                  </select>
+               </div>
+
+               <div className="form__wrapper">
+                  <label
+                     htmlFor="deadline"
+                     className='form__label'
+                  >Deadline: </label>
+
+                  <input
+                     id="deadline"
+                     value={taskDeadline}
+                     onChange={(e) => setTaskDeadline(e.target.value)}
+                     className='form__select'
+                  />
+               </div>
+
             </form>
-            <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
-            <label htmlFor="deadline">Deadline: </label>
-            <input
-               id="deadline"
-               value={taskDeadline}
-               onChange={(e) => setTaskDeadline(e.target.value)}
-            />
+
+
          </div>
 
-         <div className="alerts">
-            {alerts.duplicateAlert && <p>Task already on the to do list</p>}
-            {alerts.lengthAlert && <p>Minimum 3 characters required</p>}
-            {alerts.dateAlert && <p>Your deadline date must not be set in the past. Date fromat: DD.MM.YYYY
+         <div>
+            {alerts.duplicateAlert && <p className="text">Task already on the to do list</p>}
+            {alerts.lengthAlert && <p className="text">Minimum 3 characters required</p>}
+            {alerts.dateAlert && <p className="text">Your deadline date must not be set in the past. Date fromat: DD.MM.YYYY
                </p>}
          </div>
 
-         <div className="taskActions">
-            <button onClick={handleRemoveTask}>Remove task!</button>
-            <button onClick={handleUpdateTask}>Update task!</button>
+         <div className="task__buttons">
+            <button
+               className="task__button button"
+               onClick={handleRemoveTask}>
+               Remove task!</button>
+            <button
+               className="task__button button"
+               onClick={handleUpdateTask}>
+               Update task!</button>
          </div>
 
          <div className="comments">
             <AddComment taskId={task.id} />
 
-            <ul>
-               Comments:
-   <RenderComments task={task} />
+            <ul className="list">
+               <h2 className="title__sub">
+                  Comments:
+               </h2>
+
+               <RenderComments task={task} />
             </ul>
          </div>
 

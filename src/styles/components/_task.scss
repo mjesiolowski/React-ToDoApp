@@ -1,0 +1,16 @@
+.task {
+   margin: $xs-size;
+}
+
+.task__text {
+   margin: 0 $xs-size $xs-size $xs-size;
+}
+
+.task__buttons {
+   @include flexbox(center, space-around);
+   margin: $xs-size;
+}
+
+.task__button {
+   font-size: $font-size-m;
+}

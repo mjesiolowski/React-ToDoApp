@@ -10,13 +10,16 @@ import DoneTask from '../components/DoneTask';
 
 const AppRouter = () => (
   <BrowserRouter>
-    <Header />
-    <Switch>
-      <Route path="/" component={HomePage} exact={true} />
-      <Route path="/edit/:id" component={EditTask} />
-      <Route path="/done/:id" component={DoneTask} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <div className="container app">
+      <Header />
+      <Switch>
+        <Route path="/" component={HomePage} exact={true} />
+        <Route path="/edit/:id" component={EditTask} />
+        <Route path="/done/:id" component={DoneTask} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </div>
+
   </BrowserRouter>
 );
 

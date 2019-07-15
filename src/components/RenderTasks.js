@@ -5,16 +5,17 @@ import { getFilteredTasks } from '../functions/getFilteredTasks'
 
 const RenderTasks = ({ tasks }) => {
    const renderTasks = () => tasks.map(task =>
-      <li key={task.id}><Task {...task} /></li>
+
+      <li className="tasks__item list__item" key={task.id}><Task {...task} /></li>
    )
 
    return (
-      <div className="tasksToDo">
-         <ul>
-            <h2>Tasks to do:</h2>
+      <section className="tasksToDo tasks">
+         <ul className="list">
+            <h2 className="title__sub">Tasks to do:</h2>
             {renderTasks()}
          </ul>
-      </div>
+      </section>
    )
 }
 

@@ -1,0 +1,9 @@
+.button {
+   background-color: $dark;
+   border: 1px solid $white;
+   color: $white;
+   cursor: pointer;
+   font-size: $font-size-l;
+   padding: $s-size;
+   margin: 0 $xs-size $xs-size $xs-size;
+}

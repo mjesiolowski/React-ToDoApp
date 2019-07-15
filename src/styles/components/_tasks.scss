@@ -1,0 +1,25 @@
+.tasks {
+   padding: $xs-size;
+}
+
+.tasks__item {
+   @include flexbox(center, space-around);
+   background-color: lighten($dark, 10%);
+   padding: 0 $s-size $s-size $s-size;
+   margin-bottom: $s-size
+}
+
+.tasks__item--done {
+   padding: 0;
+}
+
+.tasks__link {
+   flex-basis: 100%;
+   font-size: $font-size-l;
+   padding: $s-size;
+   text-align: center;
+}
+
+.tasks__deadline {
+   display: none;
+}

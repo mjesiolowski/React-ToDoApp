@@ -15,6 +15,6 @@ export const getFilteredTasks = (tasks, { filteredText, sortBy }) => {
                return a.isPriority > b.isPriority ? -1 : 1
          }
       })
-   // console.log('Filtered: ', filteredTasks)
+
    return filteredTasks
 }

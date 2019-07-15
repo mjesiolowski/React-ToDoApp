@@ -1,14 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import HomePage from './HomePage'
+import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
 
-const Header = () => {
+const Header = ({ dispatch }) => {
+
+   const handleReturnButton = () => {
+      dispatch(lengthAlert(false))
+      dispatch(duplicateAlert(false))
+      dispatch(dateAlert(false))
+   }
 
    return (
-      <header>
-         <NavLink to="/"><h1>ToDoList App</h1></NavLink>
+      <header className="header">
+         <h1 onClick={handleReturnButton} className="title">   <NavLink to="/" className="link">Task App</NavLink></h1>
+
       </header>
    )
 }
 
-export default Header
+export default connect()(Header)
