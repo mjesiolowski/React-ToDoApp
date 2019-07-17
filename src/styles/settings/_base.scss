@@ -13,6 +13,16 @@ html {
 body {
   font-family: 'Montserrat', Arial, sans-serif;
   background-color: lighten($dark, 10%);
-  // min-height: 100vh;
   word-break: break-all;
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader--hide {
+  visibility: hidden;
 }

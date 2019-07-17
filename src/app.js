@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-
-
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-
-
+const loader = document.querySelector('.loader');
+const hideLoader = () => loader.classList.add('loader--hide');
 
 const store = configureStore()
 
@@ -21,7 +19,7 @@ store.subscribe(() => {
 
 const jsx = (
   <Provider store={store}>
-    <AppRouter />
+    <AppRouter hideLoader={hideLoader} />
   </Provider>
 );
 
