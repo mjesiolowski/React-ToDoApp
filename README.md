@@ -34,11 +34,11 @@ DATA
 
 
 ## Technology used:
-React (with React Router)
-Redux
-SASS + BEM
-Node.js (Express)
-Webpack
+React (with React Router),
+Redux,
+SASS + BEM,
+Node.js (Express),
+Webpack,
 Heroku platform
 
 
