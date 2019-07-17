@@ -18,12 +18,15 @@ const Comment = ({ comment, dispatch, id: taskId, completed }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      dispatch(editComment(taskId,
-         {
-            ...comment,
-            beingEdited: false,
-            text: commentText
-         }))
+      commentText.length > 0 ?
+         dispatch(editComment(taskId,
+            {
+               ...comment,
+               beingEdited: false,
+               text: commentText
+            }))
+         :
+         dispatch(editComment(taskId, { ...comment, beingEdited: false, }))
    }
 
    return (
