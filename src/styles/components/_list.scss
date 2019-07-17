@@ -4,6 +4,10 @@
 }
 
 .list__item {
+   background-color: lighten($dark, 10%);
    color: $white;
    list-style: none;
+   margin-bottom: $s-size;
+   padding: $s-size;
+
 }

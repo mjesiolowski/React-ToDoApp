@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import moment from 'moment'
 import RenderComments from './RenderComments'
 
 
-const DoneTask = ({ task, history }) => {
+const DoneTask = ({ task }) => {
    const dateFormat = "DD.MM.YYYY"
-
-   const handleReturnButton = () => {
-      history.push('/')
-   }
 
 
    return (
-      <section>
-         <button onClick={handleReturnButton}>Home page</button>
-         <div className="taskDetails">
-            <h1>{task.name}</h1>
-            <p>Created at: {moment(task.createdAt).format(dateFormat)}</p>
-            <p>Completed at: {moment(task.completedAt).format(dateFormat)}</p>
+      <section className="task">
+         <div className="container">
+            <h1 className="title__sub">{task.name}</h1>
+            <p className="task__text text">Created at: {moment(task.createdAt).format(dateFormat)}</p>
+            <p className="task__text text">Completed at: {moment(task.completedAt).format(dateFormat)}</p>
          </div>
 
          <div className="comments">
-            <ul>
-               Comments:
-            <RenderComments task={task} />
+            <ul className="list">
+               <h2 className="title__sub">
+                  Comments:
+               </h2>
+               <RenderComments task={task} />
             </ul>
          </div>
 

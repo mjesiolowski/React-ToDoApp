@@ -33,7 +33,7 @@ const AddComment = ({ dispatch, taskId, commentAlert }) => {
 
          <button className="task__button button">Add comment</button>
 
-         {commentAlert && <p>Minimum length of 1 character required</p>}
+         {commentAlert && <p className='text'>Minimum length of 1 character required</p>}
       </form>
 
    )

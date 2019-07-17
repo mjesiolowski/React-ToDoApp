@@ -4,9 +4,6 @@
 
 .tasks__item {
    @include flexbox(center, space-around);
-   background-color: lighten($dark, 10%);
-   padding: 0 $s-size $s-size $s-size;
-   margin-bottom: $s-size
 }
 
 .tasks__item--done {
@@ -16,8 +13,12 @@
 .tasks__link {
    flex-basis: 100%;
    font-size: $font-size-l;
-   padding: $s-size;
+   padding: 0 $s-size $s-size $s-size;
    text-align: center;
+}
+
+.tasks__link--done {
+   padding: $s-size
 }
 
 .tasks__deadline {

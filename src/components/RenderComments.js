@@ -18,7 +18,7 @@ const RenderComments = ({ task }) => {
    )
 
    return (
-      renderComments().length > 0 ? renderComments() : <p>No comments</p>
+      renderComments().length > 0 ? renderComments() : <p className="text">No comments</p>
    )
 }
 

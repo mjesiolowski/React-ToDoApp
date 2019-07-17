@@ -1,5 +1,6 @@
 .form {
    @include flexbox(center, center);
+   padding: $xs-size;
 }
 
 .form__input {
