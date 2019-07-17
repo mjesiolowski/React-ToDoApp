@@ -1,0 +1,61 @@
+.form {
+   @include flexbox(center, center);
+   padding: $xs-size;
+
+   @media (min-width: $tablet-breakpoint) {
+      @include flexbox(center, center);
+   }
+}
+
+.form__input {
+   border: none;
+   color: black;
+   flex-basis: 100%;
+   font-size: $font-size-s;
+   height: 3rem;
+   margin: 0 $s-size $s-size $s-size;
+   padding: $s-size 0;
+   text-align: center;
+
+   @media (min-width: $tablet-breakpoint) {
+      flex-basis: 45%;
+      height: 4rem;
+      margin: $s-size;
+   }
+}
+
+.form__label {
+   color: $white;
+   font-size: $font-size-s;
+   font-weight: bold;
+
+   @media (min-width: $tablet-breakpoint) {
+      flex-basis: 100%;
+      margin: $s-size $s-size 0 $s-size;
+      text-align: center;
+   }
+}
+
+.form__select {
+   color: black;
+   font-size: $font-size-s;
+   height: 3rem;
+   margin: 0 $s-size;
+   text-align: center;
+
+   @media (min-width: $tablet-breakpoint) {
+      flex-basis: 45%;
+      height: 4rem;
+      margin: $s-size;
+   }
+}
+
+.form__wrapper {
+   @include flexbox(center, center);
+   margin: 0 $s-size $s-size $s-size;
+
+   @media (min-width: $tablet-breakpoint) {
+      flex-basis: 100%;
+      margin: 0
+   }
+}

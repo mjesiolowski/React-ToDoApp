@@ -1,0 +1,17 @@
+.button {
+   background-color: $dark;
+   border: 1px solid $white;
+   color: $white;
+   cursor: pointer;
+   font-size: $font-size-l;
+   margin: $xs-size;
+   padding: $s-size;
+   transition: .3s;
+
+   @media (min-width: $desktop-breakpoint) {
+      &:hover {
+         border: 1px solid $blue;
+         color: $blue;
+      }
+   }
+}

@@ -10,11 +10,19 @@
 .task__buttons {
    @include flexbox(center, space-around);
    margin: $l-size;
+
+   @media (min-width: $desktop-breakpoint) {
+      @include flexbox(center, center);
+   }
 }
 
 .task__button {
    flex-basis: 100%;
    font-size: $font-size-m;
+
+   @media (min-width: $desktop-breakpoint) {
+      flex-basis: 40%;
+   }
 }
 
 .task__comment {

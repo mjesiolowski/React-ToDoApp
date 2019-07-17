@@ -3,5 +3,9 @@
    border: 2px solid $blue;
    margin: 0 auto;
    min-height: 100vh;
-   // width: 60rem;
+
+   @media (min-width: $tablet-breakpoint) {
+      width: 60rem;
+   }
+
 }
