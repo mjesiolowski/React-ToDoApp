@@ -1,31 +1,45 @@
-## big update is coming...
+# Task App
 
-
-# React-ToDoApp
-
-React\Redux to do list app with adding, editing, deleting and searching.
-
-https://mjesiolowski.github.io/React-ToDoApp/
+https://mj-taskapp.herokuapp.com/
 
 ## Info:
-As I have started my React adventure some time ago I put some trust 
-in my skill and decided to make this ToDoApp.
-It allows you to add, edit, delete and search your tasks. You can check 
-the latest 3 done tasks at the bottom part of the application.
+React based task manager app with adding, editing, deleting, searching, comments and routes.
 
 
 ## Rules:
-- you can add as many tasks as you want to
-- tasks length is unlimited, except for minimum value of 3 characters
+ADDING
+- you can add as many tasks as you want to,
+- tasks length is unlimited, though minimum number of 3 characters is required
+     
+EDITING
+- you can edit your task details either by clicking on the 'edit' button (with a pen on it) or by clicking a task name
+      
+DELETING
+- you can delete your task permanently either by clicking on the 'delete' button (with a pen on it) or in the 'edit task' section
+      
+ACTIVE TASKS
+- on the bottom part you can view your last 5 done tasks (lastly done task on the top of the list)
+- click on the task name to get more details
+      
+FILTERING
 - you can filter your tasks using the search button (case insensitive)
-- you can edit your to do tasks
-- on the bottom part you can view your last 3 done tasks (lastly done task on the top of the list)
-- the remove button deletes your task permanently
+- you can sort task by: creation date, name, deadline and priority
+
+COMMENTS
+- all comments are listed on the task subpage
+- you can add, edit and delete comments
+
+DATA
+- local storage stores the task data
+
 
 ## Technology used:
-React
-Redux
-CSS + BEM
+React (with React Router),
+Redux,
+SASS + BEM,
+Node.js (Express),
+Webpack,
+Heroku platform
 
 
       
