@@ -8,6 +8,7 @@ import { validateTask } from '../functions/validateTask'
 import { handleAlerts } from '../functions/handleAlerts'
 
 const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
+
    const dateFormat = "DD.MM.YYYY"
 
    const [taskName, setTaskName] = useState(task.name)
