@@ -34,7 +34,7 @@ DATA
 
 
 ## Technology used:
-React (with React Router),
+React (with React Router and React Hooks),
 Redux,
 SASS + BEM,
 Node.js (Express),
