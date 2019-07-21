@@ -6,8 +6,9 @@ unit tests on the way...
 https://mj-taskapp.herokuapp.com/
 
 ## Info:
-React based task manager app with adding, editing, deleting, searching, comments and routes.
+NEVER build a task (to do) app they say, everyone builds it they say... Well, it doesn't resonate with me at all! I love being organized and I cannot imagine starting my day without looking at my tasks list, hence I found it totally excting to build a task manager on my own.
 
+React based task manager app with adding, editing, deleting, searching, comments and routes.
 
 ## Rules:
 ADDING
