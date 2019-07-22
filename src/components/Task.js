@@ -30,7 +30,7 @@ const Task = ({ name, id, isPriority, deadline, dispatch }) => {
             to={'/edit/' + id}
             onClick={handleNavigation}
          >
-            {name} {isPriority === 'true' && <i className="fas fa-medal"></i>}
+            {name} {isPriority === true && <i className="fas fa-medal"></i>}
          </NavLink>
 
          <button

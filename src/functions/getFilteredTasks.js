@@ -12,7 +12,7 @@ export const getFilteredTasks = (tasks, { filteredText, sortBy }) => {
             case 'name':
                return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
             case 'priority':
-               return a.isPriority > b.isPriority ? -1 : 1
+               return a.createdAt > b.createdAt && a.isPriority ? -1 : 1
          }
       })
 

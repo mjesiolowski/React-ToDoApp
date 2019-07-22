@@ -77,7 +77,7 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
                   <select
                      id="priority"
                      value={taskPriority}
-                     onChange={(e) => setTaskPriority(e.target.value)}
+                     onChange={(e) => setTaskPriority(e.target.value === "true" ? true : false)}
                      className='form__select'
                   >
                      <option value="true">Important</option>

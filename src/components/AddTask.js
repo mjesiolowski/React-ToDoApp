@@ -9,7 +9,7 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
    const dateFormat = "DD.MM.YYYY"
 
    const [taskName, setTaskName] = useState("")
-   const [taskPriority, setTaskPriority] = useState('false')
+   const [taskPriority, setTaskPriority] = useState(false)
    const [taskDeadline, setTaskDeadline] = useState(moment().format(dateFormat))
 
    const task = {
@@ -63,7 +63,7 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
                <select
                   id="priority"
                   value={taskPriority}
-                  onChange={(e) => setTaskPriority(e.target.value)}
+                  onChange={(e) => setTaskPriority(e.target.value === "true" ? true : false)}
                   className='form__select'
                >
                   <option value="false">Not important</option>
