@@ -23,4 +23,10 @@
 
 .tasks__deadline {
    display: none;
+
+   @media(min-width: $tablet-breakpoint) {
+      display: block;
+      flex-basis: 100%;
+      margin-top: 0;
+   }
 }

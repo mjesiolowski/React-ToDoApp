@@ -33,6 +33,8 @@ const Task = ({ name, id, isPriority, deadline, dispatch }) => {
             {name} {isPriority === true && <i className="fas fa-medal"></i>}
          </NavLink>
 
+         <p className="tasks__deadline text">Deadline: {moment(deadline).format(dateFormat)}</p>
+
          <button
             onClick={handleRemoveTask}
             className="button"
@@ -50,10 +52,6 @@ const Task = ({ name, id, isPriority, deadline, dispatch }) => {
             className='button'
             to={'/edit/' + id}> <i className="fas fa-pencil-alt"></i>
          </NavLink>
-
-
-
-         <p className="tasks__deadline">Deadline: {moment(deadline).format(dateFormat)}</p>
       </>
    )
 }
