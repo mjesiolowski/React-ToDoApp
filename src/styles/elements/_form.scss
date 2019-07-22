@@ -1,14 +1,11 @@
 .form {
    @include flexbox(center, center);
    padding: $xs-size;
-
-   @media (min-width: $tablet-breakpoint) {
-      @include flexbox(center, center);
-   }
 }
 
 .form__input {
-   border: none;
+   border: 1px solid transparent;
+   border-radius: 5px;
    color: black;
    flex-basis: 100%;
    font-size: $font-size-s;
@@ -37,11 +34,13 @@
 }
 
 .form__select {
+   border: 1px solid transparent;
+   border-radius: 5px;
    color: black;
    font-size: $font-size-s;
    height: 3rem;
    margin: 0 $s-size;
-   text-align: center;
+   text-align-last: center;
 
    @media (min-width: $tablet-breakpoint) {
       flex-basis: 45%;
