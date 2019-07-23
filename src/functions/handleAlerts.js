@@ -1,6 +1,7 @@
 import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
 
 export const handleAlerts = (output, dispatch) => {
+
    switch (output) {
       case 'lengthAlert':
          dispatch(lengthAlert(true))

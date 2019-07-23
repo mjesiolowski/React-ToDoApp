@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
 
-const Header = ({ dispatch }) => {
+export const Header = ({ dispatch }) => {
 
    const handleReturnButton = () => {
       dispatch(lengthAlert(false))

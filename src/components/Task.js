@@ -5,7 +5,7 @@ import { removeTask, doneTask } from '../actions/tasks'
 import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
 import moment from 'moment'
 
-const Task = ({ name, id, isPriority, deadline, dispatch }) => {
+export const Task = ({ name, id, isPriority, deadline, dispatch }) => {
    const dateFormat = "DD.MM.YYYY"
 
    const handleRemoveTask = () => {
@@ -24,7 +24,7 @@ const Task = ({ name, id, isPriority, deadline, dispatch }) => {
 
 
    return (
-      <>
+      <li className="tasks__item list__item">
          <NavLink
             className='tasks__link link'
             to={'/edit/' + id}
@@ -52,7 +52,8 @@ const Task = ({ name, id, isPriority, deadline, dispatch }) => {
             className='button'
             to={'/edit/' + id}> <i className="fas fa-pencil-alt"></i>
          </NavLink>
-      </>
+
+      </li>
    )
 }
 

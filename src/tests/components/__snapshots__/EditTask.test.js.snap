@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<section
+  className="task"
+>
+  <div
+    className="container"
+  >
+    <h1
+      className="title__sub"
+    >
+      Task 3
+    </h1>
+    <p
+      className="task__text text"
+    >
+      Created at: 
+      30.12.1969
+    </p>
+    <form
+      className="form"
+      onSubmit={[Function]}
+    >
+      <input
+        className="form__input"
+        onChange={[Function]}
+        type="text"
+        value="Task 3"
+      />
+    </form>
+    <div
+      className="form__wrapper"
+    >
+      <label
+        className="form__label"
+        htmlFor="priority"
+      >
+        Priority:
+      </label>
+      <select
+        className="form__select"
+        id="priority"
+        onChange={[Function]}
+        value={false}
+      >
+        <option
+          value="true"
+        >
+          Important
+        </option>
+        <option
+          value="false"
+        >
+          Not important
+        </option>
+      </select>
+    </div>
+    <div
+      className="form__wrapper"
+    >
+      <label
+        className="form__label"
+        htmlFor="deadline"
+      >
+        Deadline: 
+      </label>
+      <input
+        className="form__select"
+        id="deadline"
+        onChange={[Function]}
+        value="02.01.1970"
+      />
+    </div>
+  </div>
+  <div />
+  <div
+    className="task__buttons"
+  >
+    <button
+      className="task__button button"
+      onClick={[Function]}
+    >
+      Remove task!
+    </button>
+    <button
+      className="task__button button"
+      onClick={[Function]}
+    >
+      Update task!
+    </button>
+  </div>
+  <div
+    className="comments"
+  >
+    <Connect(AddComment)
+      taskId="3"
+    />
+    <ul
+      className="list"
+    >
+      <h2
+        className="title__sub"
+      >
+        Comments:
+      </h2>
+      <RenderComments
+        task={
+          Object {
+            "comments": Array [],
+            "completed": false,
+            "completedAt": null,
+            "createdAt": -172800000,
+            "deadline": 86400000,
+            "id": "3",
+            "isPriority": false,
+            "name": "Task 3",
+          }
+        }
+      />
+    </ul>
+  </div>
+</section>
+`;

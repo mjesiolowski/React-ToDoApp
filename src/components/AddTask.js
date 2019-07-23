@@ -5,7 +5,7 @@ import moment from 'moment'
 import { validateTask } from '../functions/validateTask'
 import { handleAlerts } from '../functions/handleAlerts'
 
-const AddTask = ({ dispatch, alerts, tasks }) => {
+export const AddTask = ({ dispatch, alerts, tasks }) => {
    const dateFormat = "DD.MM.YYYY"
 
    const [taskName, setTaskName] = useState("")
@@ -25,7 +25,6 @@ const AddTask = ({ dispatch, alerts, tasks }) => {
          isPriority: taskPriority,
          deadline: moment(taskDeadline, dateFormat).valueOf()
       }))
-
       const isTaskValid = handleAlerts(validateTask({ ...task }, tasks), dispatch)
       if (isTaskValid) {
          addTaskAction()

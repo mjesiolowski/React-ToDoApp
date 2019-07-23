@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingPage = () => (
+export const LoadingPage = () => (
   <div>
     <img src="/images/loader.gif" />
   </div>

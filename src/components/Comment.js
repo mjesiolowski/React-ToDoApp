@@ -3,30 +3,30 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import { editComment, deleteComment } from '../actions/tasks'
 
-const Comment = ({ comment, dispatch, id: taskId, completed }) => {
+export const Comment = ({ editComment, deleteComment, comment, id: taskId, completed }) => {
 
    const [commentText, setCommentText] = useState(comment.text)
 
    const handleEditComment = () => {
-      dispatch(editComment(taskId, { ...comment, beingEdited: true, }))
+      editComment(taskId, { ...comment, beingEdited: true, })
    }
 
 
    const handleDeleteComment = () => {
-      dispatch(deleteComment(taskId, comment.id))
+      deleteComment(taskId, comment.id)
    }
 
    const handleSubmit = (e) => {
       e.preventDefault()
       commentText.length > 0 ?
-         dispatch(editComment(taskId,
+         editComment(taskId,
             {
                ...comment,
                beingEdited: false,
                text: commentText
-            }))
+            })
          :
-         dispatch(editComment(taskId, { ...comment, beingEdited: false, }))
+         editComment(taskId, { ...comment, beingEdited: false, })
    }
 
    return (
@@ -67,4 +67,9 @@ const Comment = ({ comment, dispatch, id: taskId, completed }) => {
    )
 }
 
-export default connect()(Comment)
+const mapDispatchToProps = (dispatch) => ({
+   editComment: (id, update) => dispatch(editComment(id, update)),
+   deleteComment: (id, update) => dispatch(deleteComment(id, update))
+})
+
+export default connect(undefined, mapDispatchToProps)(Comment)

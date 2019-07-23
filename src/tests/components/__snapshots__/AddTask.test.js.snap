@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<section
+  className="addTask"
+>
+  <h2
+    className="title__sub addTask__title"
+  >
+    AddTask
+  </h2>
+  <form
+    className="form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="form__input"
+      onChange={[Function]}
+      placeholder="Add task"
+      type="text"
+      value=""
+    />
+    <input
+      className="form__input"
+      onChange={[Function]}
+      value="01.01.1970"
+    />
+    <div
+      className="form__wrapper"
+    >
+      <label
+        className="form__label"
+        htmlFor="priority"
+      >
+        Priority: 
+      </label>
+      <select
+        className="form__select"
+        id="priority"
+        onChange={[Function]}
+        value={false}
+      >
+        <option
+          value="false"
+        >
+          Not important
+        </option>
+        <option
+          value="true"
+        >
+          Important
+        </option>
+      </select>
+    </div>
+    <button
+      className="addTask__button button"
+    >
+      <i
+        className="fas fa-plus-circle"
+      />
+    </button>
+  </form>
+</section>
+`;

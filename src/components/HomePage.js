@@ -4,7 +4,7 @@ import RenderTasks from './RenderTasks'
 import RenderDoneTasks from './RenderDoneTasks'
 import AddTask from './AddTask'
 
-const HomePage = () => (
+export const HomePage = () => (
   <main className='main'>
     <Navigation />
     <AddTask />

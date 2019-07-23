@@ -4,7 +4,7 @@ import moment from 'moment'
 import RenderComments from './RenderComments'
 
 
-const DoneTask = ({ task }) => {
+export const DoneTask = ({ task }) => {
    const dateFormat = "DD.MM.YYYY"
 
 

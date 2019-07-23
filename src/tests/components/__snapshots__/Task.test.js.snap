@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<li
+  className="tasks__item list__item"
+>
+  <NavLink
+    className="tasks__link link"
+    onClick={[Function]}
+    to="/edit/2"
+  >
+    Task 2
+     
+  </NavLink>
+  <p
+    className="tasks__deadline text"
+  >
+    Deadline: 
+    05.01.1970
+  </p>
+  <button
+    className="button"
+    onClick={[Function]}
+  >
+    <i
+      className="fas fa-trash-alt"
+    />
+  </button>
+  <button
+    className="button"
+    onClick={[Function]}
+  >
+    <i
+      className="fas fa-check"
+    />
+  </button>
+  <NavLink
+    className="button"
+    to="/edit/2"
+  >
+     
+    <i
+      className="fas fa-pencil-alt"
+    />
+  </NavLink>
+</li>
+`;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import { setTextFilter as setTextFilterAction, setSortBy as setSortByAction } from '../actions/filters'
 
-const Navigation = ({ dispatch }) => {
+export const Navigation = ({ dispatch }) => {
    const [filteredText, setFilteredText] = useState("")
    const [sortBy, setSortBy] = useState('createdAt')
 

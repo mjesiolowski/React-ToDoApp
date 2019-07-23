@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<section
+  className="navigation form"
+>
+  <input
+    className="form__input"
+    onChange={[Function]}
+    placeholder="Search task"
+    value=""
+  />
+  <div
+    className="form__wrapper"
+  >
+    <label
+      className="form__label"
+      htmlFor="sortTasks"
+    >
+      Sort by:
+    </label>
+    <select
+      className="form__select"
+      id="sortTasks"
+      onChange={[Function]}
+      value="createdAt"
+    >
+      <option
+        value="createdAt"
+      >
+        Created at
+      </option>
+      <option
+        value="name"
+      >
+        Name
+      </option>
+      <option
+        value="deadline"
+      >
+        Deadline
+      </option>
+      <option
+        value="priority"
+      >
+        Priority
+      </option>
+    </select>
+  </div>
+</section>
+`;

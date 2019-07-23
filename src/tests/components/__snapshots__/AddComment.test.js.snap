@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <input
+    className="form__input"
+    onChange={[Function]}
+    placeholder="Add comment"
+    type="text"
+    value=""
+  />
+  <button
+    className="task__button button"
+  >
+    Add comment
+  </button>
+</form>
+`;

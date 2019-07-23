@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import DoneTaskItem from './DoneTaskItem'
 
-const RenderDoneTasks = ({ tasks }) => {
+export const RenderDoneTasks = ({ tasks }) => {
 
    const renderTasks = () => tasks.map(task =>
       <li className="tasks__item tasks__item--done list__item" key={task.id}><DoneTaskItem {...task} /></li>)

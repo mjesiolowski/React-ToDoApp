@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<section
+  className="doneTasks tasks"
+>
+  <ul
+    className="list"
+  >
+    <h2
+      className="title__sub"
+    >
+      Completed (last 5):
+    </h2>
+    <li
+      className="tasks__item tasks__item--done list__item"
+      key="1"
+    >
+      <DoneTaskItem
+        comments={Array []}
+        completed={false}
+        completedAt={null}
+        createdAt={-86400000}
+        deadline={172800000}
+        id="1"
+        isPriority={false}
+        name="Task 1"
+      />
+    </li>
+    <li
+      className="tasks__item tasks__item--done list__item"
+      key="2"
+    >
+      <DoneTaskItem
+        comments={
+          Array [
+            Object {
+              "beingEdited": false,
+              "createdAt": 1562845281035,
+              "id": "f612c3a5-4ae8-4c86-9a2b-513e2a0fed99",
+              "text": "test comment",
+            },
+          ]
+        }
+        completed={false}
+        completedAt={null}
+        createdAt={-259200000}
+        deadline={345600000}
+        id="2"
+        isPriority={false}
+        name="Task 2"
+      />
+    </li>
+    <li
+      className="tasks__item tasks__item--done list__item"
+      key="3"
+    >
+      <DoneTaskItem
+        comments={Array []}
+        completed={false}
+        completedAt={null}
+        createdAt={-172800000}
+        deadline={86400000}
+        id="3"
+        isPriority={false}
+        name="Task 3"
+      />
+    </li>
+  </ul>
+</section>
+`;

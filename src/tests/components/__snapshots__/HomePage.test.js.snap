@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<main
+  className="main"
+>
+  <Connect(Navigation) />
+  <Connect(AddTask) />
+  <Connect(RenderTasks) />
+  <Connect(RenderDoneTasks) />
+</main>
+`;

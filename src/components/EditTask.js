@@ -7,7 +7,7 @@ import { editTask, removeTask } from '../actions/tasks'
 import { validateTask } from '../functions/validateTask'
 import { handleAlerts } from '../functions/handleAlerts'
 
-const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
+export const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
 
    const dateFormat = "DD.MM.YYYY"
 
@@ -22,8 +22,6 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
       dateFormat
    }
 
-
-
    const handleRemoveTask = () => {
       dispatch(removeTask(task.id))
       history.push('/')
@@ -31,7 +29,7 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault()
-      handleEditTask()
+      handleUpdateTask()
    }
 
    const handleUpdateTask = () => {
@@ -57,6 +55,7 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
          <div className="container">
             <h1 className="title__sub">{task.name}</h1>
             <p className="task__text text">Created at: {moment(task.createdAt).format(dateFormat)}</p>
+
             <form
                onSubmit={handleSubmit}
                className="form"
@@ -68,38 +67,40 @@ const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
                   className="form__input"
                />
 
-               <div className="form__wrapper">
-                  <label
-                     htmlFor="priority"
-                     className='form__label'
-                  >Priority:</label>
-
-                  <select
-                     id="priority"
-                     value={taskPriority}
-                     onChange={(e) => setTaskPriority(e.target.value === "true" ? true : false)}
-                     className='form__select'
-                  >
-                     <option value="true">Important</option>
-                     <option value="false">Not important</option>
-                  </select>
-               </div>
-
-               <div className="form__wrapper">
-                  <label
-                     htmlFor="deadline"
-                     className='form__label'
-                  >Deadline: </label>
-
-                  <input
-                     id="deadline"
-                     value={taskDeadline}
-                     onChange={(e) => setTaskDeadline(e.target.value)}
-                     className='form__select'
-                  />
-               </div>
-
             </form>
+
+            <div className="form__wrapper">
+               <label
+                  htmlFor="priority"
+                  className='form__label'
+               >Priority:</label>
+
+               <select
+                  id="priority"
+                  value={taskPriority}
+                  onChange={(e) => setTaskPriority(e.target.value === "true" ? true : false)}
+                  className='form__select'
+               >
+                  <option value="true">Important</option>
+                  <option value="false">Not important</option>
+               </select>
+            </div>
+
+            <div className="form__wrapper">
+               <label
+                  htmlFor="deadline"
+                  className='form__label'
+               >Deadline: </label>
+
+               <input
+                  id="deadline"
+                  value={taskDeadline}
+                  onChange={(e) => setTaskDeadline(e.target.value)}
+                  className='form__select'
+               />
+            </div>
+
+
 
 
          </div>

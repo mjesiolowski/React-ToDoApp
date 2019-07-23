@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import Task from './Task'
 import { getFilteredTasks } from '../functions/getFilteredTasks'
 
-const RenderTasks = ({ tasks }) => {
+export const RenderTasks = ({ tasks }) => {
    const renderTasks = () => tasks.map(task =>
 
-      <li className="tasks__item list__item" key={task.id}><Task {...task} /></li>
+      <Task key={task.id} {...task} />
    )
 
    return (

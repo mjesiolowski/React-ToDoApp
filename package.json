@@ -46,6 +46,7 @@
     "jest": "^24.8.0",
     "live-server": "^1.2.1",
     "raf": "3.3.2",
+    "react-test-renderer": "^16.8.6",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   }

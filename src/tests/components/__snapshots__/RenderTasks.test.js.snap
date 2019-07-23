@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<section
+  className="tasksToDo tasks"
+>
+  <ul
+    className="list"
+  >
+    <h2
+      className="title__sub"
+    >
+      Tasks to do:
+    </h2>
+    <Connect(Task)
+      comments={Array []}
+      completed={false}
+      completedAt={null}
+      createdAt={-86400000}
+      deadline={172800000}
+      id="1"
+      isPriority={false}
+      key="1"
+      name="Task 1"
+    />
+    <Connect(Task)
+      comments={
+        Array [
+          Object {
+            "beingEdited": false,
+            "createdAt": 1562845281035,
+            "id": "f612c3a5-4ae8-4c86-9a2b-513e2a0fed99",
+            "text": "test comment",
+          },
+        ]
+      }
+      completed={false}
+      completedAt={null}
+      createdAt={-259200000}
+      deadline={345600000}
+      id="2"
+      isPriority={false}
+      key="2"
+      name="Task 2"
+    />
+    <Connect(Task)
+      comments={Array []}
+      completed={false}
+      completedAt={null}
+      createdAt={-172800000}
+      deadline={86400000}
+      id="3"
+      isPriority={false}
+      key="3"
+      name="Task 3"
+    />
+  </ul>
+</section>
+`;

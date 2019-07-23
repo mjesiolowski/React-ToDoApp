@@ -3,19 +3,19 @@ import { connect } from 'react-redux'
 import { addComment } from '../actions/tasks'
 import { commentAlert as commentAlertAction } from '../actions/alerts'
 
-const AddComment = ({ dispatch, taskId, commentAlert }) => {
+export const AddComment = ({ addComment, commentAlertAction, taskId, commentAlert }) => {
 
    const [commentValue, setCommentValue] = useState("")
 
    const handleSubmit = (e) => {
       e.preventDefault()
       if (commentValue.length > 0) {
-         dispatch(addComment(taskId, commentValue))
-         dispatch(commentAlertAction(false))
+         addComment(taskId, commentValue)
+         commentAlertAction(false)
          setCommentValue("")
       }
       else {
-         dispatch(commentAlertAction(true))
+         commentAlertAction(true)
       }
    }
 
@@ -39,11 +39,15 @@ const AddComment = ({ dispatch, taskId, commentAlert }) => {
    )
 }
 
+const mapDispatchToProps = (dispatch) => ({
+   addComment: (taskId, commentValue) => dispatch(addComment(taskId, commentValue)),
+   commentAlertAction: (isTrue) => dispatch(commentAlertAction(isTrue))
+}
+)
 const mapStateToProps = ({ alerts }) => {
    return {
       commentAlert: alerts.commentAlert
    }
 }
 
-
-export default connect(mapStateToProps)(AddComment)
+export default connect(mapStateToProps, mapDispatchToProps)(AddComment)
