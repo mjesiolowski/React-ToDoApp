@@ -39,23 +39,37 @@ export const AddTask = ({ dispatch, alerts, tasks }) => {
             onSubmit={(e) => handleAddTask(e, dateFormat)}
             className='form'
          >
-            <label htmlFor="taskName"></label>
-            <input
-               id="taskName"
-               type="text"
-               placeholder="Add task"
-               value={taskName}
-               onChange={(e) => setTaskName(e.target.value)}
-               className='form__input'
-            />
 
-            <label htmlFor="taskDeadline"></label>
-            <input
-               id="taskDeadline"
-               value={taskDeadline}
-               onChange={(e) => setTaskDeadline(e.target.value)}
-               className='form__input'
-            />
+            <div className="form__wrapper">
+               <label
+                  htmlFor="taskName"
+                  className='form__label'
+               >Add task:</label>
+
+               <input
+                  id="taskName"
+                  type="text"
+                  placeholder="Add task"
+                  value={taskName}
+                  onChange={(e) => setTaskName(e.target.value)}
+                  className='form__input'
+               />
+            </div>
+
+            <div className="form__wrapper">
+               <label
+                  htmlFor="taskDeadline"
+                  className='form__label'
+               >Deadline:</label>
+
+               <input
+                  id="taskDeadline"
+                  value={taskDeadline}
+                  onChange={(e) => setTaskDeadline(e.target.value)}
+                  className='form__input'
+               />
+            </div>
+
 
             <div className="form__wrapper">
                <label

@@ -22,14 +22,20 @@ export const Navigation = ({ dispatch }) => {
 
    return (
       <section className="navigation form">
-         <label htmlFor="searchTask"></label>
-         <input
-            id="searchTask"
-            value={filteredText}
-            onChange={(e) => dispatchFilteredText(e.target.value)}
-            placeholder="Search task"
-            className="form__input"
-         />
+         <div className="form__wrapper">
+            <label
+               htmlFor="searchTask"
+               className='form__label'
+            >Search task:</label>
+
+            <input
+               id="searchTask"
+               value={filteredText}
+               onChange={(e) => dispatchFilteredText(e.target.value)}
+               placeholder="Search task"
+               className="form__input"
+            />
+         </div>
 
          <div className="form__wrapper">
             <label

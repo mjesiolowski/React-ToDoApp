@@ -3,6 +3,12 @@
    padding: $xs-size;
 }
 
+.form__wrapper {
+   @include flexbox(center, center);
+   flex-basis: 100%;
+   margin: 0 $s-size $s-size $s-size;
+}
+
 .form__input {
    border: 1px solid transparent;
    border-radius: 5px;
@@ -10,14 +16,12 @@
    flex-basis: 100%;
    font-size: $font-size-s;
    height: 4rem;
-   margin: 0 $s-size $s-size $s-size;
+   margin: $s-size;
    padding: $s-size 0;
    text-align: center;
 
    @media (min-width: $tablet-breakpoint) {
       flex-basis: 45%;
-      height: 4rem;
-      margin: $s-size;
    }
 }
 
@@ -25,10 +29,11 @@
    color: $white;
    font-size: $font-size-s;
    font-weight: bold;
+   margin: 0 $s-size $s-size $s-size;
 
    @media (min-width: $tablet-breakpoint) {
-      flex-basis: 100%;
-      margin: $s-size $s-size 0 $s-size;
+      flex-basis: 45%;
+      margin: $s-size;
       text-align: center;
    }
 }
@@ -37,24 +42,13 @@
    border: 1px solid transparent;
    border-radius: 5px;
    color: black;
+   flex-basis: 100%;
    font-size: $font-size-s;
    height: 4rem;
-   margin: 0 $s-size;
+   margin: $s-size;
    text-align-last: center;
 
    @media (min-width: $tablet-breakpoint) {
       flex-basis: 45%;
-      height: 4rem;
-      margin: $s-size;
-   }
-}
-
-.form__wrapper {
-   @include flexbox(center, center);
-   margin: 0 $s-size $s-size $s-size;
-
-   @media (min-width: $tablet-breakpoint) {
-      flex-basis: 100%;
-      margin: 0
    }
 }

@@ -1,6 +1,7 @@
 .button {
    background-color: $dark;
    border: 1px solid $white;
+   border-radius: 5px;
    color: $white;
    cursor: pointer;
    font-size: $font-size-l;
@@ -11,6 +12,7 @@
    @media (min-width: $desktop-breakpoint) {
       &:hover {
          border: 1px solid $blue;
+         border-radius: 5px;
          color: $blue;
       }
    }

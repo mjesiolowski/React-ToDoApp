@@ -3,7 +3,7 @@
 }
 
 .tasks__item {
-   @include flexbox(center, space-around);
+   @include flexbox(center, center);
 }
 
 .tasks__item--done {
