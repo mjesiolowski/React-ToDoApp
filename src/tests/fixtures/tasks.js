@@ -1,6 +1,7 @@
 import moment from 'moment'
 
 const tasks = [{
+   id: '1',
    name: "Task 1",
    completed: false,
    completedAt: null,
@@ -10,7 +11,8 @@ const tasks = [{
    comments: []
 },
 {
-   name: "   Task 2    ",
+   id: '2',
+   name: "Task 2",
    completed: false,
    completedAt: null,
    createdAt: moment().subtract(3, 'days').valueOf(),
@@ -24,6 +26,7 @@ const tasks = [{
    }]
 },
 {
+   id: '3',
    name: "Task 3",
    completed: false,
    completedAt: null,
