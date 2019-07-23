@@ -22,7 +22,9 @@ export const Navigation = ({ dispatch }) => {
 
    return (
       <section className="navigation form">
+         <label htmlFor="searchTask"></label>
          <input
+            id="searchTask"
             value={filteredText}
             onChange={(e) => dispatchFilteredText(e.target.value)}
             placeholder="Search task"

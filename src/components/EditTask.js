@@ -60,7 +60,9 @@ export const EditTask = ({ tasks, task, alerts, history, dispatch }) => {
                onSubmit={handleSubmit}
                className="form"
             >
+               <label htmlFor="taskName"></label>
                <input
+                  id="taskName"
                   type="text"
                   value={taskName}
                   onChange={(e) => setTaskName(e.target.value)}

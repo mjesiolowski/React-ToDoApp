@@ -39,7 +39,9 @@ export const AddTask = ({ dispatch, alerts, tasks }) => {
             onSubmit={(e) => handleAddTask(e, dateFormat)}
             className='form'
          >
+            <label htmlFor="taskName"></label>
             <input
+               id="taskName"
                type="text"
                placeholder="Add task"
                value={taskName}
@@ -47,7 +49,9 @@ export const AddTask = ({ dispatch, alerts, tasks }) => {
                className='form__input'
             />
 
+            <label htmlFor="taskDeadline"></label>
             <input
+               id="taskDeadline"
                value={taskDeadline}
                onChange={(e) => setTaskDeadline(e.target.value)}
                className='form__input'
@@ -75,7 +79,7 @@ export const AddTask = ({ dispatch, alerts, tasks }) => {
             {alerts.lengthAlert && <p className='addTask__alert text'>Minimum 3 characters required</p>}
             {alerts.dateAlert && <p className='addTask__alert text'>Your deadline date must not be set in the past. Date fromat: DD.MM.YYYY
                </p>}
-            <button className='addTask__button button'><i className="fas fa-plus-circle"></i></button>
+            <button className='addTask__button button' aria-label="add task"><i className="fas fa-plus-circle"></i></button>
          </form>
       </section>
    )

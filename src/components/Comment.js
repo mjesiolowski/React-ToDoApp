@@ -36,12 +36,15 @@ export const Comment = ({ editComment, deleteComment, comment, id: taskId, compl
                onSubmit={handleSubmit}
                className="form"
             >
-               <input
-                  type="text"
-                  value={commentText}
-                  onChange={(e) => setCommentText(e.target.value)}
-                  className="form__input"
-               />
+               <label>
+                  <input
+                     type="text"
+                     value={commentText}
+                     onChange={(e) => setCommentText(e.target.value)}
+                     className="form__input"
+                  />
+               </label>
+
                <p className="text">{moment(comment.createdAt).format('DD-MM-YYYY')}</ p>
             </form>
 

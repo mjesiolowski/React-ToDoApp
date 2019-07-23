@@ -38,12 +38,14 @@ export const Task = ({ name, id, isPriority, deadline, dispatch }) => {
          <button
             onClick={handleRemoveTask}
             className="button"
+            aria-label="remove task"
          ><i className="fas fa-trash-alt"></i>
          </button>
 
          <button
             onClick={handleDoneTask}
             className="button"
+            aria-label="mark as done"
          ><i className="fas fa-check"></i>
          </button>
 

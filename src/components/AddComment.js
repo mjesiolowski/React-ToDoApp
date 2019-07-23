@@ -24,7 +24,10 @@ export const AddComment = ({ addComment, commentAlertAction, taskId, commentAler
          onSubmit={handleSubmit}
          className="form"
       >
+
+         <label htmlFor="commentValue"></label>
          <input
+            id="commentValue"
             value={commentValue}
             onChange={(e) => setCommentValue(e.target.value)}
             type="text"
