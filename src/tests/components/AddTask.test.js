@@ -3,8 +3,7 @@ import { shallow } from 'enzyme'
 import { AddTask } from '../../components/AddTask'
 import tasks from '../fixtures/tasks'
 import alerts from '../fixtures/alerts'
-// import moment from 'moment'
-
+import moment from 'moment'
 
 let wrapper, dispatch
 
@@ -55,40 +54,49 @@ test('should change taskDeadline state', () => {
   expect(wrapper.find('input').at(1).prop('value')).toEqual(value)
 })
 
-// test('should handle adding task', () => {
-//   const task = {
-//     name: 'dsdsd',
-//     isPriority: true,
-//     deadline: '30.05.2050'
-//   }
-//   wrapper.find('input').at(0).simulate('change', {
-//     target: {
-//       value: task.name
-//     },
-//   });
-//   wrapper.find('select').simulate('change', {
-//     target: {
-//       value: task.isPriority
-//     },
-//   });
-//   wrapper.find('input').at(1).simulate('change', {
-//     target: {
-//       value: task.deadline
-//     },
-//   });
+test('should handle adding task', () => {
+  const task = {
+    name: 'dsdsd',
+    isPriority: 'true',
+    deadline: moment().add(1, 'year').valueOf(),
+  }
 
-//   wrapper.find('form').simulate('submit', {
-//     preventDefault: () => { },
-//     dateFormat: "DD.MM.YYYY"
-//   })
-//   expect(dispatch).toHaveBeenLastCalledWith(
-//     {
-//       type: "ADD_TASK",
-//       name: task.name,
-//       isPriority: task.isPriority,
-//       deadline: 'test'
-//     }
-//   )
-//   expect(history.push).toHaveBeenLastCalledWith('/')
-// })
+  wrapper.find('input').at(0).simulate('change', {
+    target: {
+      value: task.name
+    },
+  });
+  wrapper.find('select').simulate('change', {
+    target: {
+      value: task.isPriority
+    },
+  });
+  wrapper.find('input').at(1).simulate('change', {
+    target: {
+      value: task.deadline
+    },
+  });
+
+  wrapper.find('form').simulate('submit', {
+    preventDefault: () => { },
+    dateFormat: "DD.MM.YYYY"
+  })
+  expect(dispatch).toHaveBeenLastCalledWith(
+    {
+      type: "ADD_TASK",
+      task: {
+        completed: false,
+        completedAt: null,
+        createdAt: moment().valueOf(),
+        comments: [],
+        name: task.name,
+        isPriority: true,
+        deadline: task.deadline,
+        id: expect.any(String)
+      }
+
+    }
+  )
+  expect(wrapper.find('input').at(0).prop('value')).toEqual('')
+})
 

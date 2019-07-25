@@ -43,7 +43,7 @@ exports[`should render 1`] = `
             "completed": false,
             "completedAt": null,
             "createdAt": -86400000,
-            "deadline": 172800000,
+            "deadline": 94694400000,
             "id": "1",
             "isPriority": false,
             "name": "Task 1",

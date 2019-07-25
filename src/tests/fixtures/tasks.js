@@ -6,7 +6,7 @@ const tasks = [{
    completed: false,
    completedAt: null,
    createdAt: moment().subtract(1, 'day').valueOf(),
-   deadline: moment().add(2, 'days').valueOf(),
+   deadline: moment().add(3, 'years').valueOf(),
    isPriority: false,
    comments: []
 },
@@ -16,7 +16,7 @@ const tasks = [{
    completed: false,
    completedAt: null,
    createdAt: moment().subtract(3, 'days').valueOf(),
-   deadline: moment().add(4, 'days').valueOf(),
+   deadline: moment().add(2, 'years').valueOf(),
    isPriority: true,
    comments: [{
       beingEdited: false,
@@ -31,7 +31,7 @@ const tasks = [{
    completed: false,
    completedAt: null,
    createdAt: moment().subtract(2, 'days').valueOf(),
-   deadline: moment().add(1, 'day').valueOf(),
+   deadline: moment().add(1, 'year').valueOf(),
    isPriority: false,
    comments: []
 },

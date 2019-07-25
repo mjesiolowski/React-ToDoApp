@@ -19,7 +19,7 @@ exports[`should render 1`] = `
     className="tasks__deadline text"
   >
     Deadline: 
-    05.01.1970
+    01.01.1972
   </p>
   <button
     aria-label="remove task"

@@ -19,7 +19,7 @@ test('should sort by deadline', () => {
   const filteredText = ''
   const sortBy = 'deadline'
   const filteredTasks = getFilteredTasks(tasks, { filteredText, sortBy })
-  expect(filteredTasks).toEqual([tasks[2], tasks[0], tasks[1]])
+  expect(filteredTasks).toEqual([tasks[2], tasks[1], tasks[0]])
 })
 
 test('should sort by name (default)', () => {

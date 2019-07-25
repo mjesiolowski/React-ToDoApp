@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import { EditTask } from '../../components/EditTask'
 import tasks from '../fixtures/tasks'
 import alerts from '../fixtures/alerts'
+import moment from 'moment'
 
 let wrapper, history, dispatch, task
 
@@ -36,6 +37,12 @@ test('should remove task', () => {
 })
 
 test('should handle updating task', () => {
+  const deadline = moment().add(1, 'year').valueOf()
+  wrapper.find('input').at(1).simulate('change', {
+    target: {
+      value: deadline
+    },
+  });
   wrapper.find('.task__button button').at(1).simulate('click')
   expect(dispatch).toHaveBeenLastCalledWith(
     {
@@ -43,7 +50,7 @@ test('should handle updating task', () => {
       type: "EDIT_TASK",
       update: {
         ...task,
-        deadline: expect.any(Number)
+        deadline
       },
     }
   )

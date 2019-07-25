@@ -7,7 +7,7 @@ const dateFormat = 'DD.MM.YYYY'
 test('should positively validate task', () => {
   const task = {
     taskId: '1',
-    taskName: "Test tak",
+    taskName: "Test task",
     taskDeadline: moment().add(100, 'years').valueOf(),
     dateFormat
   }

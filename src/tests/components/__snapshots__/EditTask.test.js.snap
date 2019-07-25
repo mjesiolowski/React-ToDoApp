@@ -80,7 +80,7 @@ exports[`should render 1`] = `
         className="form__select"
         id="deadline"
         onChange={[Function]}
-        value="02.01.1970"
+        value="01.01.1971"
       />
     </div>
   </div>
@@ -122,7 +122,7 @@ exports[`should render 1`] = `
             "completed": false,
             "completedAt": null,
             "createdAt": -172800000,
-            "deadline": 86400000,
+            "deadline": 31536000000,
             "id": "3",
             "isPriority": false,
             "name": "Task 3",
