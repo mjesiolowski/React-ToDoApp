@@ -37,7 +37,7 @@ DATA
 ## Technology used:
 React (with React Router and React Hooks),
 Redux,
-Unit tests with Jest and Enzyme
+Unit tests with Jest and Enzyme,
 SASS + BEM,
 Node.js (Express),
 Webpack,
