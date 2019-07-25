@@ -1,8 +1,8 @@
 import { lengthAlert, duplicateAlert, dateAlert } from '../actions/alerts'
 
-export const handleAlerts = (output, dispatch) => {
+export const handleAlerts = (alert, dispatch) => {
 
-   switch (output) {
+   switch (alert) {
       case 'lengthAlert':
          dispatch(lengthAlert(true))
          dispatch(duplicateAlert(false))

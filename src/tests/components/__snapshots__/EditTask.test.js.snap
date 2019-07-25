@@ -22,12 +22,23 @@ exports[`should render 1`] = `
       className="form"
       onSubmit={[Function]}
     >
-      <input
-        className="form__input"
-        onChange={[Function]}
-        type="text"
-        value="Task 3"
-      />
+      <div
+        className="form__wrapper"
+      >
+        <label
+          className="form__label"
+          htmlFor="taskName"
+        >
+          Add task:
+        </label>
+        <input
+          className="form__input"
+          id="taskName"
+          onChange={[Function]}
+          type="text"
+          value="Task 3"
+        />
+      </div>
     </form>
     <div
       className="form__wrapper"

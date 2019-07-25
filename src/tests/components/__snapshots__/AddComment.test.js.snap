@@ -5,8 +5,12 @@ exports[`should render 1`] = `
   className="form"
   onSubmit={[Function]}
 >
+  <label
+    htmlFor="commentValue"
+  />
   <input
     className="form__input"
+    id="commentValue"
     onChange={[Function]}
     placeholder="Add comment"
     type="text"

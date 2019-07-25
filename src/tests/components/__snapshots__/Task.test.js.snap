@@ -11,6 +11,9 @@ exports[`should render 1`] = `
   >
     Task 2
      
+    <i
+      className="fas fa-medal"
+    />
   </NavLink>
   <p
     className="tasks__deadline text"
@@ -19,6 +22,7 @@ exports[`should render 1`] = `
     05.01.1970
   </p>
   <button
+    aria-label="remove task"
     className="button"
     onClick={[Function]}
   >
@@ -27,6 +31,7 @@ exports[`should render 1`] = `
     />
   </button>
   <button
+    aria-label="mark as done"
     className="button"
     onClick={[Function]}
   >

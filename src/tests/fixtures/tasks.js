@@ -17,7 +17,7 @@ const tasks = [{
    completedAt: null,
    createdAt: moment().subtract(3, 'days').valueOf(),
    deadline: moment().add(4, 'days').valueOf(),
-   isPriority: false,
+   isPriority: true,
    comments: [{
       beingEdited: false,
       createdAt: 1562845281035,

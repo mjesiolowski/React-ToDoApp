@@ -47,7 +47,7 @@ exports[`should render 1`] = `
         createdAt={-259200000}
         deadline={345600000}
         id="2"
-        isPriority={false}
+        isPriority={true}
         name="Task 2"
       />
     </li>

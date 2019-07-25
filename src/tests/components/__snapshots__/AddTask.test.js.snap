@@ -13,18 +13,40 @@ exports[`should render 1`] = `
     className="form"
     onSubmit={[Function]}
   >
-    <input
-      className="form__input"
-      onChange={[Function]}
-      placeholder="Add task"
-      type="text"
-      value=""
-    />
-    <input
-      className="form__input"
-      onChange={[Function]}
-      value="01.01.1970"
-    />
+    <div
+      className="form__wrapper"
+    >
+      <label
+        className="form__label"
+        htmlFor="taskName"
+      >
+        Add task:
+      </label>
+      <input
+        className="form__input"
+        id="taskName"
+        onChange={[Function]}
+        placeholder="Add task"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form__wrapper"
+    >
+      <label
+        className="form__label"
+        htmlFor="taskDeadline"
+      >
+        Deadline:
+      </label>
+      <input
+        className="form__input"
+        id="taskDeadline"
+        onChange={[Function]}
+        value="01.01.1970"
+      />
+    </div>
     <div
       className="form__wrapper"
     >
@@ -53,6 +75,7 @@ exports[`should render 1`] = `
       </select>
     </div>
     <button
+      aria-label="add task"
       className="addTask__button button"
     >
       <i

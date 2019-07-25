@@ -4,12 +4,23 @@ exports[`should render 1`] = `
 <section
   className="navigation form"
 >
-  <input
-    className="form__input"
-    onChange={[Function]}
-    placeholder="Search task"
-    value=""
-  />
+  <div
+    className="form__wrapper"
+  >
+    <label
+      className="form__label"
+      htmlFor="searchTask"
+    >
+      Search task:
+    </label>
+    <input
+      className="form__input"
+      id="searchTask"
+      onChange={[Function]}
+      placeholder="Search task"
+      value=""
+    />
+  </div>
   <div
     className="form__wrapper"
   >
